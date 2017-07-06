@@ -3,7 +3,7 @@ defmodule Adze.API.RootView do
 
   def render("index.json", %{conn: conn}) do
     %{
-      hello: "world"
+      this: "is where a HAL-like representation of what you can do with this API will go"
     }
 
       # version: "v1",
