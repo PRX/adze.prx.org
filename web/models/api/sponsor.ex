@@ -6,6 +6,7 @@ defmodule Adze.API.Sponsor do
     field :billing_info, :string
     field :notes, :string
 
+    has_many :campaigns, Adze.API.Campaign
     timestamps()
   end
 

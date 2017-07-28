@@ -26,7 +26,7 @@ defmodule Adze.API.SponsorController do
 
   def show(conn, %{"id" => id}) do
     sponsor = Repo.get!(Sponsor, id)
-    render(conn, "show.json", sponsor: sponsor)
+    render(conn, "show.json", sponsor: Repo.preload(sponsor, :campaigns))
   end
 
   def update(conn, %{"id" => id, "sponsor" => sponsor_params}) do

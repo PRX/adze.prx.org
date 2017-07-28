@@ -6,7 +6,10 @@ defmodule Adze.API.SponsorView do
   end
 
   def render("show.json", %{sponsor: sponsor}) do
-    %{data: render_one(sponsor, Adze.API.SponsorView, "sponsor.json")}
+     %{data: render_one(sponsor, Adze.API.SponsorView, "sponsor.json")}
+    # sponsor
+    # |> Map.put(:campaigns, data: sponsor.campaigns)
+    # |> render_one(sponsor, Adze.API.SponsorView, "sponsor.json")
   end
 
   def render("sponsor.json", %{sponsor: sponsor}) do
