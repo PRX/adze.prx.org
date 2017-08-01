@@ -33,6 +33,16 @@ ba_campaign = Repo.insert! %Campaign{
   repeat_sponsor: false
 }
 
+ba_campaign = Repo.insert! %Campaign{
+  sponsor_id: zip_recruiter.id,
+  show_id: 4,
+  start_date: Ecto.Date.cast!("2017-06-27"),
+  end_date: Ecto.Date.cast!("2017-07-27"),
+  copy: "hire the people!",
+  zone: "Midroll",
+  repeat_sponsor: false
+}
+
 
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.

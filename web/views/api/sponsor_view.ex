@@ -1,5 +1,3 @@
-require IEx
-
 defmodule Adze.API.SponsorView do
   use Adze.Web, :view
 

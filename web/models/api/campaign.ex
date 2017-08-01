@@ -2,7 +2,6 @@ defmodule Adze.API.Campaign do
   use Adze.Web, :model
 
   schema "campaigns" do
-    field :sponsor_id, :integer
     field :show_id, :integer
     field :start_date, Ecto.Date
     field :end_date, Ecto.Date
@@ -10,6 +9,7 @@ defmodule Adze.API.Campaign do
     field :zone, :string
     field :repeat_sponsor, :boolean, default: false
 
+    belongs_to :sponsor, Adze.API.Sponsor
     timestamps()
   end
 
