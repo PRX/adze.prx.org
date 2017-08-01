@@ -9,6 +9,7 @@
 alias Adze.Repo
 alias Adze.API.Sponsor
 alias Adze.API.Campaign
+alias Adze.API.Show
 
 Repo.delete_all Sponsor
 blue_apron = Repo.insert! %Sponsor{
@@ -23,9 +24,27 @@ zip_recruiter = Repo.insert! %Sponsor{
   notes: "One job, alllll the places"
 }
 
+nnpi= Repo.insert! %Show{
+  structure: "preroll preroll midroll postroll sonic_id",
+  network: "Radiotopia",
+  name: "99% Invincible",
+  rate: "$10 CPM",
+  notes: "No ads before 07/01/2016",
+  recording_day: "Monday"
+}
+
+dogtalk = Repo.insert! %Show{
+  structure: "preroll preroll midroll postroll sonic_id",
+  network: "Dogs",
+  name: "Dogtalk",
+  rate: "$10 CPM",
+  notes: "Prerolls only before 05/01/2017",
+  recording_day: "Saturday"
+}
+
 ba_campaign = Repo.insert! %Campaign{
   sponsor_id: blue_apron.id,
-  show_id: 4,
+  show_id: nnpi.id,
   start_date: Ecto.Date.cast!("2017-06-27"),
   end_date: Ecto.Date.cast!("2017-07-27"),
   copy: "Yay blue apron!",
@@ -33,9 +52,9 @@ ba_campaign = Repo.insert! %Campaign{
   repeat_sponsor: false
 }
 
-ba_campaign = Repo.insert! %Campaign{
+zip_campaign = Repo.insert! %Campaign{
   sponsor_id: zip_recruiter.id,
-  show_id: 4,
+  show_id: dogtalk.id,
   start_date: Ecto.Date.cast!("2017-06-27"),
   end_date: Ecto.Date.cast!("2017-07-27"),
   copy: "hire the people!",
