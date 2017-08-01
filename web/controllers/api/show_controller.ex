@@ -26,7 +26,7 @@ defmodule Adze.API.ShowController do
 
   def show(conn, %{"id" => id}) do
     show = Repo.get!(Show, id)
-    render(conn, "show.json", show: show)
+    render(conn, "show.json", show: Repo.preload(show, :campaigns))
   end
 
   def update(conn, %{"id" => id, "show" => show_params}) do

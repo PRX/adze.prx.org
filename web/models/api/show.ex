@@ -9,6 +9,7 @@ defmodule Adze.API.Show do
     field :notes, :string
     field :recording_day, :string
 
+    has_many :campaigns, Adze.API.Campaign
     timestamps()
   end
 
