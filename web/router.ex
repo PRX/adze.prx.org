@@ -30,14 +30,14 @@ defmodule Adze.Router do
     # pipe_through :authorized
 
     resources "/sponsors", SponsorController, except: [:new, :edit] do
-      resources "/campaigns", CampaignController, only: [:show, :index]
+      resources "/campaigns", CampaignController, only: [:index]
     end
-    # resources "/shows", ShowController, except: [:new, :edit]
-    # resources "/campaigns", CampaignController, except: [:new, :edit]
+    resources "/shows", ShowController, except: [:new, :edit] do
+      resources "/campaigns", CampaignController, only: [:index]
+    end
     resources "/campaigns", CampaignController, except: [:new, :edit]
 
     # resources "/creatives", CreativeController, except: [:new, :edit]
-    #
   end
 
 end
