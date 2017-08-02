@@ -11,7 +11,8 @@ alias Adze.API.Sponsor
 alias Adze.API.Campaign
 alias Adze.API.Show
 
-Repo.delete_all Sponsor
+Enum.each([Sponsor, Campaign, Show], fn f -> Repo.delete_all(f) end)
+
 blue_apron = Repo.insert! %Sponsor{
   name: "Blue Apron",
   billing_info: "One Blue Apron, Blue Apron Street, Blue Apron State",

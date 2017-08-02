@@ -26,7 +26,7 @@ defmodule Adze.API.CampaignController do
 
   def show(conn, %{"id" => id}) do
     campaign = Repo.get!(Campaign, id)
-    render(conn, "show.json", campaign: campaign)
+    render(conn, "show.json", campaign: Repo.preload(campaign, :sponsor))
   end
 
   def update(conn, %{"id" => id, "campaign" => campaign_params}) do

@@ -35,7 +35,11 @@ defmodule Adze.API.CampaignView do
           templated: true
         },
         "prx:sponsor": %{
-          href: api_sponsor_path(conn, :index, campaign.sponsor),
+          href: api_sponsor_path(conn, :show, campaign.sponsor_id),
+          templated: true
+        },
+        "prx:show": %{
+          href: api_show_path(conn, :show, campaign.show_id),
           templated: true
         }
       }

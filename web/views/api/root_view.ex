@@ -12,18 +12,6 @@ defmodule Adze.API.RootView do
         profile: %{
           href: "http://meta.prx.org/model/api",
         },
-        "prx:sponsors": [%{
-          title: "Get a paged collection of sponsors",
-          profile: "http://meta.prx.org/model/sponsor",
-          href: api_sponsor_path(conn, :index) <> "{?page,per}",
-          templated: true,
-        }],
-        "prx:sponsor": [%{
-          title: "Get info for a single sponsor",
-          profile: "http://meta.prx.org/model/sponsor",
-          href: fix_path(api_sponsor_path(conn, :show, "{id}")),
-          templated: true,
-        }],
         "prx:campaigns": [%{
           title: "Get a paged collection of sponsorship campaigns",
           profile: "http://meta.prx.org/model/campaign",
@@ -36,6 +24,31 @@ defmodule Adze.API.RootView do
           href: fix_path(api_campaign_path(conn, :show, "{id}")),
           templated: true,
         }],
+        "prx:shows": [%{
+          title: "Get a paged collection of sponsorship shows",
+          profile: "http://meta.prx.org/model/show",
+          href: api_show_path(conn, :index) <> "{?page,per}",
+          templated: true,
+        }],
+        "prx:show": [%{
+          title: "Get info for a single show",
+          profile: "http://meta.prx.org/model/show",
+          href: fix_path(api_show_path(conn, :show, "{id}")),
+          templated: true,
+        }],
+        "prx:sponsors": [%{
+          title: "Get a paged collection of sponsors",
+          profile: "http://meta.prx.org/model/sponsor",
+          href: api_sponsor_path(conn, :index) <> "{?page,per}",
+          templated: true,
+        }],
+        "prx:sponsor": [%{
+          title: "Get info for a single sponsor",
+          profile: "http://meta.prx.org/model/sponsor",
+          href: fix_path(api_sponsor_path(conn, :show, "{id}")),
+          templated: true,
+        }],
+
       }
     }
   end
