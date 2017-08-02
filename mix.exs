@@ -18,9 +18,14 @@ defmodule Adze.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Adze, []},
-     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+     applications: apps(Mix.env)]
   end
+  defp apps(:dev), do: [:dotenv | apps()]
+  defp apps(_), do: apps()
+  defp apps, do: [
+    :phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
+    :phoenix_ecto, :postgrex
+  ]
 
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "web", "test/support"]
@@ -37,7 +42,8 @@ defmodule Adze.Mixfile do
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:dotenv, "~> 2.1", only: :dev}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
