@@ -1,0 +1,11 @@
+_build
+_build_docker_compose
+db
+deps
+deps_docker_compose
+*.ez
+node_modules
+.env
+env-example
+.git
+erl_crash.dump
