@@ -1,20 +1,53 @@
-# Adze
+# Adze.prx.org
 
-To start your Phoenix app:
+## Description
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
-  * Install Node.js dependencies with `npm install`
-  * Start Phoenix endpoint with `mix phoenix.server`
+[Phoenix app](http://www.phoenixframework.org) providing an API to ad handling for PRX. This project follows the [standards for PRX services](https://github.com/PRX/meta.prx.org/wiki/Project-Standards#services).
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## Installation
 
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
+### Local
 
-## Learn more
+To get started, make sure you have completed the [Phoenix install guide](http://www.phoenixframework.org/docs/installation).  Then:
+```
+# Get the code
+git clone git@github.com:PRX/porter.prx.org.git
 
-  * Official website: http://www.phoenixframework.org/
-  * Guides: http://phoenixframework.org/docs/overview
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+# Install dependencies
+mix deps.get
+
+# Configure your environment (you'll _probably_ need postgres and AWS credentials)
+cp env-example .env
+vi .env
+
+# Start the phoenix server
+mix phoenix.server
+
+# Or run interactively
+iex -S mix phoenix.server
+
+# Or just get a console
+iex -S mix
+
+# Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+```
+
+### Docker
+
+TODO: Docker support.
+
+## Dependencies
+
+TODO: maybe feeder to get shows?
+
+## Usage
+
+TODO: localhost:4000
+
+## License
+
+[AGPL License](https://www.gnu.org/licenses/agpl-3.0.html)
+
+## Contributing
+
+Completing a Contributor License Agreement (CLA) is required for PRs to be accepted.
