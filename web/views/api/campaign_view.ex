@@ -12,11 +12,7 @@ defmodule Adze.API.CampaignView do
   end
 
   def render("show.json", %{conn: conn, campaign: campaign}) do
-    sponsor = Enum.map(campaign.sponsor, fn s ->
-      %{name: s.name, notes: s.notes}
-    end)
     campaign_json(campaign, conn)
-    |> Map.put(:sponsor, sponsor)
   end
 
   defp campaign_json(campaign, conn) do

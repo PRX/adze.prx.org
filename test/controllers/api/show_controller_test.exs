@@ -11,19 +11,19 @@ defmodule Adze.API.ShowControllerTest do
 
   test "lists all entries on index", %{conn: conn} do
     conn = get conn, api_show_path(conn, :index)
-    assert json_response(conn, 200)["data"] == []
+    assert json_response(conn, 200) == %{
+      "_embedded" => %{
+        "prx:items" => []
+      },
+      "count" => 0,
+      "total" => 0
+    }
   end
 
   test "shows chosen resource", %{conn: conn} do
     show = Repo.insert! %Show{}
     conn = get conn, api_show_path(conn, :show, show)
-    assert json_response(conn, 200)["data"] == %{"id" => show.id,
-      "structure" => show.structure,
-      "network" => show.network,
-      "name" => show.name,
-      "rate" => show.rate,
-      "notes" => show.notes,
-      "recording_day" => show.recording_day}
+    assert json_response(conn, 200)["id"] == show.id
   end
 
   test "renders page not found when id is nonexistent", %{conn: conn} do
@@ -34,7 +34,7 @@ defmodule Adze.API.ShowControllerTest do
 
   test "creates and renders resource when data is valid", %{conn: conn} do
     conn = post conn, api_show_path(conn, :create), show: @valid_attrs
-    assert json_response(conn, 201)["data"]["id"]
+    assert json_response(conn, 201)["id"]
     assert Repo.get_by(Show, @valid_attrs)
   end
 
@@ -46,7 +46,7 @@ defmodule Adze.API.ShowControllerTest do
   test "updates and renders chosen resource when data is valid", %{conn: conn} do
     show = Repo.insert! %Show{}
     conn = put conn, api_show_path(conn, :update, show), show: @valid_attrs
-    assert json_response(conn, 200)["data"]["id"]
+    assert json_response(conn, 200)["id"]
     assert Repo.get_by(Show, @valid_attrs)
   end
 

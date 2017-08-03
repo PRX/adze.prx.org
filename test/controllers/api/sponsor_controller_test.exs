@@ -28,7 +28,7 @@ defmodule Adze.API.SponsorControllerTest do
 
   test "creates and renders resource when data is valid", %{conn: conn} do
     conn = post conn, api_sponsor_path(conn, :create), sponsor: @valid_attrs
-    assert json_response(conn, 201)["data"]["id"]
+    assert json_response(conn, 201)["id"]
     assert Repo.get_by(Sponsor, @valid_attrs)
   end
 
@@ -40,7 +40,7 @@ defmodule Adze.API.SponsorControllerTest do
   test "updates and renders chosen resource when data is valid", %{conn: conn} do
     sponsor = Repo.insert! %Sponsor{}
     conn = put conn, api_sponsor_path(conn, :update, sponsor), sponsor: @valid_attrs
-    assert json_response(conn, 200)["data"]["id"]
+    assert json_response(conn, 200)["id"]
     assert Repo.get_by(Sponsor, @valid_attrs)
   end
 

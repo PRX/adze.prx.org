@@ -11,20 +11,19 @@ defmodule Adze.API.CampaignControllerTest do
 
   test "lists all entries on index", %{conn: conn} do
     conn = get conn, api_campaign_path(conn, :index)
-    assert json_response(conn, 200)["data"] == []
+    assert json_response(conn, 200) == %{
+      "_embedded" => %{
+        "prx:items" => []
+      },
+      "count" => 0,
+      "total" => 0
+    }
   end
 
   test "shows chosen resource", %{conn: conn} do
-    campaign = Repo.insert! %Campaign{}
+    campaign = Repo.insert! %Campaign{show_id: 42, sponsor_id: 42}
     conn = get conn, api_campaign_path(conn, :show, campaign)
-    assert json_response(conn, 200)["data"] == %{"id" => campaign.id,
-      "sponsor_id" => campaign.sponsor_id,
-      "show_id" => campaign.show_id,
-      "start_date" => campaign.start_date,
-      "end_date" => campaign.end_date,
-      "copy" => campaign.copy,
-      "zone" => campaign.zone,
-      "repeat_sponsor" => campaign.repeat_sponsor}
+    assert json_response(conn, 200)["id"] == campaign.id
   end
 
   test "renders page not found when id is nonexistent", %{conn: conn} do
@@ -35,7 +34,7 @@ defmodule Adze.API.CampaignControllerTest do
 
   test "creates and renders resource when data is valid", %{conn: conn} do
     conn = post conn, api_campaign_path(conn, :create), campaign: @valid_attrs
-    assert json_response(conn, 201)["data"]["id"]
+    assert json_response(conn, 201)["id"]
     assert Repo.get_by(Campaign, @valid_attrs)
   end
 
@@ -47,7 +46,7 @@ defmodule Adze.API.CampaignControllerTest do
   test "updates and renders chosen resource when data is valid", %{conn: conn} do
     campaign = Repo.insert! %Campaign{}
     conn = put conn, api_campaign_path(conn, :update, campaign), campaign: @valid_attrs
-    assert json_response(conn, 200)["data"]["id"]
+    assert json_response(conn, 200)["id"]
     assert Repo.get_by(Campaign, @valid_attrs)
   end
 

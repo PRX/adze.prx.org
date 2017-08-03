@@ -16,7 +16,7 @@ defmodule Adze.API.ShowController do
         conn
         |> put_status(:created)
         |> put_resp_header("location", api_show_path(conn, :show, show))
-        |> render("show.json", show: show)
+        |> render("show.json", show: Repo.preload(show, :campaigns))
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
@@ -35,7 +35,7 @@ defmodule Adze.API.ShowController do
 
     case Repo.update(changeset) do
       {:ok, show} ->
-        render(conn, "show.json", show: show)
+        render(conn, "show.json", show: Repo.preload(show, :campaigns))
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)

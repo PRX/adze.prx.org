@@ -16,7 +16,7 @@ defmodule Adze.API.SponsorController do
         conn
         |> put_status(:created)
         |> put_resp_header("location", api_sponsor_path(conn, :show, sponsor))
-        |> render("show.json", sponsor: sponsor)
+        |> render("show.json", sponsor: Repo.preload(sponsor, :campaigns))
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
@@ -35,7 +35,7 @@ defmodule Adze.API.SponsorController do
 
     case Repo.update(changeset) do
       {:ok, sponsor} ->
-        render(conn, "show.json", sponsor: sponsor)
+        render(conn, "show.json", sponsor: Repo.preload(sponsor, :campaigns))
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
