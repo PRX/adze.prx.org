@@ -18,6 +18,7 @@ adze:
   command: web
   environment:
     VIRTUAL_HOST: adze.prx.docker
+    MIX_ENV:
 db:
   image: postgres
   env_file:

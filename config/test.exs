@@ -12,8 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :adze, Adze.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "adze_test",
-  hostname: "localhost",
+  database: System.get_env("DB_ENV_POSTGRES_DATABASE"),
+  username: System.get_env("DB_ENV_POSTGRES_USER"),
+  password: System.get_env("DB_ENV_POSTGRES_PASSWORD"),
+  hostname: System.get_env("DB_PORT_5432_TCP_ADDR"),
   pool: Ecto.Adapters.SQL.Sandbox
