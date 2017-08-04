@@ -16,15 +16,6 @@ config :adze, Adze.Endpoint,
   url: [host: "adze.prx.org", port: 80]
   # cache_static_manifest: "priv/static/manifest.json"
 
-config :adze, Adze.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  database: System.get_env("DB_ENV_POSTGRES_DATABASE"),
-  username: System.get_env("DB_ENV_POSTGRES_USER"),
-  password: System.get_env("DB_ENV_POSTGRES_PASSWORD"),
-  hostname: System.get_env("DB_PORT_5432_TCP_ADDR"),
-  port: System.get_env("DB_PORT_5432_TCP_PORT"),
-  pool_size: String.to_integer(System.get_env("DB_POOL_SIZE") || "2")
-
 # Do not print debug messages in production
 config :logger, level: :info
 

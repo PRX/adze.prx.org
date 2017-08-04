@@ -47,6 +47,10 @@ docker-compose build
 mkdir _build_docker_compose deps_docker_compose
 docker-compose run adze compile
 
+# start the db and run migrations
+docker-compose start db
+docker-compose run adze migrate
+
 # now you can run a local server
 docker-compose up
 open http://adze.prx.docker

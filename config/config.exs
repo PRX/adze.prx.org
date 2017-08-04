@@ -17,6 +17,16 @@ config :adze, Adze.Endpoint,
   pubsub: [name: Adze.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+# Configures the repository
+config :adze, Adze.Repo,
+ adapter: Ecto.Adapters.Postgres,
+ database: System.get_env("DB_ENV_POSTGRES_DATABASE"),
+ username: System.get_env("DB_ENV_POSTGRES_USER"),
+ password: System.get_env("DB_ENV_POSTGRES_PASSWORD"),
+ hostname: System.get_env("DB_PORT_5432_TCP_ADDR"),
+ port: System.get_env("DB_PORT_5432_TCP_PORT"),
+ pool_size: String.to_integer(System.get_env("DB_POOL_SIZE") || "2")
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
