@@ -64,11 +64,17 @@ docker-compose run adze test test/controllers/api/root_controller_test.exs
 
 ## Dependencies
 
-TODO: maybe feeder to get shows?
+TODO: maybe feeder to get shows? AWS RDS? 
 
-## Usage
+## Testing
 
-TODO: localhost:4000
+```
+# Run all the tests
+docker-compose run adze test
+
+# Run a specific test
+docker-compose run adze test test/controllers/api/root_controller_test.exs
+```
 
 ## License
 
