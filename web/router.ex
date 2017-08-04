@@ -13,6 +13,11 @@ defmodule Adze.Router do
     plug :accepts, ["json", "hal"]
   end
 
+  def id_host, do: Env.get(:id_host)
+  pipeline :authorized do
+    plug PrxAuth.Plug, required: true, iss: &Adze.Router.id_host/0
+  end
+
   # pipeline :authorized do
   #   plug PrxAuth.Plug, required: true
   # end
@@ -27,7 +32,7 @@ defmodule Adze.Router do
 
   scope "/api/v1", Adze.API, as: :api do
     pipe_through :api
-    # pipe_through :authorized
+    pipe_through :authorized
 
     resources "/sponsors", SponsorController, except: [:new, :edit] do
       resources "/campaigns", CampaignController, only: [:index]

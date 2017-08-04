@@ -16,7 +16,7 @@ git clone git@github.com:PRX/porter.prx.org.git
 # Install dependencies
 mix deps.get
 
-# Configure your environment (you'll _probably_ need postgres and AWS credentials)
+# Configure your environment
 cp env-example .env
 vi .env
 

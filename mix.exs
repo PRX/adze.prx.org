@@ -24,7 +24,7 @@ defmodule Adze.Mixfile do
   defp apps(_), do: apps()
   defp apps, do: [
     :phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-    :phoenix_ecto, :postgrex
+    :phoenix_ecto, :postgrex, :prx_auth
   ]
 
   # Specifies which paths to compile per environment.
@@ -41,6 +41,7 @@ defmodule Adze.Mixfile do
      {:postgrex, ">= 0.0.0"},
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
+     {:prx_auth, "~> 0.0.1"},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:dotenv, "~> 2.1", only: :dev}]
