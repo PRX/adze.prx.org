@@ -24,7 +24,6 @@ defmodule Adze.API.CampaignView do
       end_date: campaign.end_date,
       copy: campaign.copy,
       zone: campaign.zone,
-      repeat_sponsor: campaign.repeat_sponsor,
       _links: %{
         self: %{
           href: api_campaign_path(conn, :show, campaign),

@@ -2,7 +2,7 @@ defmodule Adze.API.CampaignControllerTest do
   use Adze.ConnCase
 
   alias Adze.API.Campaign
-  @valid_attrs %{copy: "some content", end_date: %{day: 17, month: 4, year: 2010}, repeat_sponsor: true, show_id: 42, sponsor_id: 42, start_date: %{day: 17, month: 4, year: 2010}, zone: "some content"}
+  @valid_attrs %{copy: "some content", end_date: %{day: 17, month: 4, year: 2010}, show_id: 42, sponsor_id: 42, start_date: %{day: 17, month: 4, year: 2010}, zone: "some content"}
   @invalid_attrs %{}
 
   setup %{conn: conn} do

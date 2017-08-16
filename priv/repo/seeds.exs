@@ -50,7 +50,6 @@ ba_campaign = Repo.insert! %Campaign{
   end_date: Ecto.Date.cast!("2017-07-27"),
   copy: "Yay blue apron!",
   zone: "Preroll",
-  repeat_sponsor: false
 }
 
 zip_campaign = Repo.insert! %Campaign{
@@ -60,7 +59,6 @@ zip_campaign = Repo.insert! %Campaign{
   end_date: Ecto.Date.cast!("2017-07-27"),
   copy: "hire the people!",
   zone: "Midroll",
-  repeat_sponsor: false
 }
 
 
