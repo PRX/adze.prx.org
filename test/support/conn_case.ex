@@ -39,6 +39,11 @@ defmodule Adze.ConnCase do
       Ecto.Adapters.SQL.Sandbox.mode(Adze.Repo, {:shared, self()})
     end
 
-    {:ok, conn: Phoenix.ConnTest.build_conn()}
+    {:ok, conn: Phoenix.ConnTest.build_conn()|> skip_prx_auth(tags)}
+  end
+
+  defp skip_prx_auth(conn, %{prx_auth: true}), do: conn
+  defp skip_prx_auth(conn, _tags) do
+    Map.put(conn, :skip_prx_auth_during_tests, true)
   end
 end
