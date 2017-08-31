@@ -1,7 +1,7 @@
-defmodule Adze.API.ShowTest do
-  use Adze.ModelCase
+defmodule Jingle.API.ShowTest do
+  use Jingle.ModelCase
 
-  alias Adze.API.Show
+  alias Jingle.API.Show
 
   @valid_attrs %{name: "some content", network: "some content", notes: "some content", rate: "some content", recording_day: "some content", structure: "some content"}
   @invalid_attrs %{}

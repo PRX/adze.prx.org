@@ -1,11 +1,11 @@
-defmodule Adze.ChangesetView do
-  use Adze.Web, :view
+defmodule Jingle.ChangesetView do
+  use Jingle.Web, :view
 
   @doc """
   Traverses and translates changeset errors.
 
   See `Ecto.Changeset.traverse_errors/2` and
-  `Adze.ErrorHelpers.translate_error/1` for more details.
+  `Jingle.ErrorHelpers.translate_error/1` for more details.
   """
   def translate_errors(changeset) do
     Ecto.Changeset.traverse_errors(changeset, &translate_error/1)

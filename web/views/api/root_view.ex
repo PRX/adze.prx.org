@@ -1,5 +1,5 @@
-defmodule Adze.API.RootView do
-  use Adze.Web, :view
+defmodule Jingle.API.RootView do
+  use Jingle.Web, :view
 
   def render("index.json", %{conn: conn}) do
     %{

@@ -1,7 +1,7 @@
-defmodule Adze.API.ShowController do
-  use Adze.Web, :controller
+defmodule Jingle.API.ShowController do
+  use Jingle.Web, :controller
 
-  alias Adze.API.Show
+  alias Jingle.API.Show
 
   def index(conn, _params) do
     shows = Repo.all(Show)
@@ -20,7 +20,7 @@ defmodule Adze.API.ShowController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Adze.ChangesetView, "error.json", changeset: changeset)
+        |> render(Jingle.ChangesetView, "error.json", changeset: changeset)
     end
   end
 
@@ -39,7 +39,7 @@ defmodule Adze.API.ShowController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Adze.ChangesetView, "error.json", changeset: changeset)
+        |> render(Jingle.ChangesetView, "error.json", changeset: changeset)
     end
   end
 

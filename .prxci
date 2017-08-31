@@ -1,2 +1,2 @@
 docker-compose -f docker-compose-ci.yml build
-docker-compose -f docker-compose-ci.yml run adze
+docker-compose -f docker-compose-ci.yml run jingle

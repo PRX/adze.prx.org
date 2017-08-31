@@ -1,14 +1,14 @@
-defmodule Adze.Endpoint do
-  use Phoenix.Endpoint, otp_app: :adze
+defmodule Jingle.Endpoint do
+  use Phoenix.Endpoint, otp_app: :jingle
 
-  socket "/socket", Adze.UserSocket
+  socket "/socket", Jingle.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phoenix.digest
   # when deploying your static files in production.
   plug Plug.Static,
-    at: "/", from: :adze, gzip: false,
+    at: "/", from: :jingle, gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
@@ -35,8 +35,8 @@ defmodule Adze.Endpoint do
   # Set :encryption_salt if you would also like to encrypt it.
   plug Plug.Session,
     store: :cookie,
-    key: "_adze_key",
+    key: "_jingle_key",
     signing_salt: "iT1+wCQW"
 
-  plug Adze.Router
+  plug Jingle.Router
 end

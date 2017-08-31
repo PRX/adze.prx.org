@@ -1,7 +1,7 @@
 require IEx
 
-defmodule Adze.API.ShowView do
-  use Adze.Web, :view
+defmodule Jingle.API.ShowView do
+  use Jingle.Web, :view
 
   def render("index.json", %{conn: conn, shows: shows}) do
     %{

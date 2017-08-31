@@ -6,19 +6,19 @@
 use Mix.Config
 
 # General application configuration
-config :adze,
-  ecto_repos: [Adze.Repo]
+config :jingle,
+  ecto_repos: [Jingle.Repo]
 
 # Configures the endpoint
-config :adze, Adze.Endpoint,
+config :jingle, Jingle.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "9Rd5cGoyH+oEwxCEhnkEbaGPAAioXhR3MeuRVn73BP47vGKeJBZ9jjGKz/xZByAK",
-  render_errors: [view: Adze.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Adze.PubSub,
+  render_errors: [view: Jingle.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: Jingle.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures the repository
-config :adze, Adze.Repo,
+config :jingle, Jingle.Repo,
  adapter: Ecto.Adapters.Postgres,
  database: System.get_env("DB_ENV_POSTGRES_DATABASE"),
  username: System.get_env("DB_ENV_POSTGRES_USER"),

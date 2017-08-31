@@ -1,12 +1,12 @@
-defmodule Adze.API.Sponsor do
-  use Adze.Web, :model
+defmodule Jingle.API.Sponsor do
+  use Jingle.Web, :model
 
   schema "sponsors" do
     field :name, :string
     field :billing_info, :string
     field :notes, :string
 
-    has_many :campaigns, Adze.API.Campaign
+    has_many :campaigns, Jingle.API.Campaign
     timestamps()
   end
 

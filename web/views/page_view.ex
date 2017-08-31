@@ -1,3 +1,3 @@
-defmodule Adze.PageView do
-  use Adze.Web, :view
+defmodule Jingle.PageView do
+  use Jingle.Web, :view
 end

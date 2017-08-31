@@ -1,4 +1,4 @@
-adze:
+jingle:
   build: .
   links:
     - db
@@ -6,7 +6,7 @@ adze:
   env_file:
     - .env
   environment:
-    VIRTUAL_HOST: adze.prx.docker
+    VIRTUAL_HOST: jingle.prx.docker
     MIX_ENV: test
     LOCAL_ENV: 'true'
 db:

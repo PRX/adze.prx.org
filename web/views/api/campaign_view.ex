@@ -1,5 +1,5 @@
-defmodule Adze.API.CampaignView do
-  use Adze.Web, :view
+defmodule Jingle.API.CampaignView do
+  use Jingle.Web, :view
 
   def render("index.json", %{conn: conn, campaigns: campaigns}) do
     %{

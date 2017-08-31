@@ -1,5 +1,5 @@
-defmodule Adze.ErrorView do
-  use Adze.Web, :view
+defmodule Jingle.ErrorView do
+  use Jingle.Web, :view
 
   def render("404.html", _assigns) do
     "Page not found"

@@ -5,11 +5,11 @@
 # Inside the script, you can read and write to any of your
 # repositories directly:
 #
-#     Adze.Repo.insert!(%Adze.SomeModel{})
-alias Adze.Repo
-alias Adze.API.Sponsor
-alias Adze.API.Campaign
-alias Adze.API.Show
+#     Jingle.Repo.insert!(%Jingle.SomeModel{})
+alias Jingle.Repo
+alias Jingle.API.Sponsor
+alias Jingle.API.Campaign
+alias Jingle.API.Show
 
 Enum.each([Sponsor, Campaign, Show], fn f -> Repo.delete_all(f) end)
 

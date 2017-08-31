@@ -1,5 +1,5 @@
-defmodule Adze.PageControllerTest do
-  use Adze.ConnCase
+defmodule Jingle.PageControllerTest do
+  use Jingle.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/"

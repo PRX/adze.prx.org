@@ -1,5 +1,5 @@
-defmodule Adze.API.SponsorView do
-  use Adze.Web, :view
+defmodule Jingle.API.SponsorView do
+  use Jingle.Web, :view
 
   def render("index.json", %{conn: conn, sponsors: sponsors}) do
     %{

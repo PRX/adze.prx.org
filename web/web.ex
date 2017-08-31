@@ -1,12 +1,12 @@
-defmodule Adze.Web do
+defmodule Jingle.Web do
   @moduledoc """
   A module that keeps using definitions for controllers,
   views and so on.
 
   This can be used in your application as:
 
-      use Adze.Web, :controller
-      use Adze.Web, :view
+      use Jingle.Web, :controller
+      use Jingle.Web, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -30,12 +30,12 @@ defmodule Adze.Web do
     quote do
       use Phoenix.Controller
 
-      alias Adze.Repo
+      alias Jingle.Repo
       import Ecto
       import Ecto.Query
 
-      import Adze.Router.Helpers
-      import Adze.Gettext
+      import Jingle.Router.Helpers
+      import Jingle.Gettext
     end
   end
 
@@ -49,9 +49,9 @@ defmodule Adze.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import Adze.Router.Helpers
-      import Adze.ErrorHelpers
-      import Adze.Gettext
+      import Jingle.Router.Helpers
+      import Jingle.ErrorHelpers
+      import Jingle.Gettext
     end
   end
 
@@ -65,10 +65,10 @@ defmodule Adze.Web do
     quote do
       use Phoenix.Channel
 
-      alias Adze.Repo
+      alias Jingle.Repo
       import Ecto
       import Ecto.Query
-      import Adze.Gettext
+      import Jingle.Gettext
     end
   end
 

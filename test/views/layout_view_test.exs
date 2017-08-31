@@ -1,3 +1,3 @@
-defmodule Adze.LayoutViewTest do
-  use Adze.ConnCase, async: true
+defmodule Jingle.LayoutViewTest do
+  use Jingle.ConnCase, async: true
 end
