@@ -2,7 +2,7 @@
 
 ## Description
 
-[Phoenix app](http://www.phoenixframework.org) providing an API to ad handling for PRX. This project follows the [standards for PRX services](https://github.com/PRX/meta.prx.org/wiki/Project-Standards#services).
+A [Phoenix app](http://www.phoenixframework.org) providing an API to ad handling for PRX. This project follows the [standards for PRX services](https://github.com/PRX/meta.prx.org/wiki/Project-Standards#services).
 
 ## Installation
 
@@ -63,7 +63,9 @@ docker-compose run jingle test test/controllers/api/root_controller_test.exs
 
 ## Dependencies
 
-TODO: maybe feeder to get shows? AWS RDS?
+TODO: 
+maybe feeder to get shows? 
+AWS RDS
 
 ## Testing
 
