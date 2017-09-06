@@ -19,6 +19,7 @@ jingle:
   environment:
     VIRTUAL_HOST: jingle.prx.docker
     MIX_ENV:
+    LOCAL_ENV: 'true'
 db:
   image: postgres
   env_file:
