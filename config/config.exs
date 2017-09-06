@@ -29,7 +29,7 @@ config :jingle, Jingle.Repo,
 
  # Environment config (precompiled OR from env variables)
  # MUST release with RELX_REPLACE_OS_VARS=true
-config :jingle, :env_config, 
+config :jingle, :env_config,
   id_host: System.get_env("ID_HOST") || "${ID_HOST}"
 
 # Configures Elixir's Logger

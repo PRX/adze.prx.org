@@ -10,7 +10,7 @@ jingle:
     - ./web:/opt/app/web
     - ./bin:/opt/app/bin
   env_file:
-    - env-example
+    - .env
   links:
     - db
   ports:
@@ -23,6 +23,6 @@ jingle:
 db:
   image: postgres
   env_file:
-    - env-example
+    - .env
   ports:
     - "5432:5432"
