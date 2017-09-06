@@ -1,17 +1,17 @@
-adze:
+jingle:
   build: .
   links:
     - db
   command: test
   env_file:
-    - .env
+    - env-example
   environment:
-    VIRTUAL_HOST: adze.prx.docker
+    VIRTUAL_HOST: jingle.prx.docker
     MIX_ENV: test
     LOCAL_ENV: 'true'
 db:
   image: postgres
   env_file:
-    - .env
+    - env-example
   ports:
     - "5432:5432"

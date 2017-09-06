@@ -1,5 +1,5 @@
-defmodule Adze.API.Show do
-  use Adze.Web, :model
+defmodule Jingle.API.Show do
+  use Jingle.Web, :model
 
   schema "shows" do
     field :structure, :string
@@ -9,7 +9,7 @@ defmodule Adze.API.Show do
     field :notes, :string
     field :recording_day, :string
 
-    has_many :campaigns, Adze.API.Campaign
+    has_many :campaigns, Jingle.API.Campaign
     timestamps()
   end
 

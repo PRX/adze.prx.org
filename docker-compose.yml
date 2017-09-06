@@ -1,4 +1,4 @@
-adze:
+jingle:
   build: .
   volumes:
     - ./_build_docker_compose:/opt/app/_build
@@ -17,8 +17,9 @@ adze:
     - "4000:4000"
   command: web
   environment:
-    VIRTUAL_HOST: adze.prx.docker
+    VIRTUAL_HOST: jingle.prx.docker
     MIX_ENV:
+    LOCAL_ENV: 'true'
 db:
   image: postgres
   env_file:

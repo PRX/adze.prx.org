@@ -1,7 +1,7 @@
-defmodule Adze.API.SponsorController do
-  use Adze.Web, :controller
+defmodule Jingle.API.SponsorController do
+  use Jingle.Web, :controller
 
-  alias Adze.API.Sponsor
+  alias Jingle.API.Sponsor
 
   def index(conn, _params) do
     sponsors = Repo.all(Sponsor)
@@ -20,7 +20,7 @@ defmodule Adze.API.SponsorController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Adze.ChangesetView, "error.json", changeset: changeset)
+        |> render(Jingle.ChangesetView, "error.json", changeset: changeset)
     end
   end
 
@@ -39,7 +39,7 @@ defmodule Adze.API.SponsorController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Adze.ChangesetView, "error.json", changeset: changeset)
+        |> render(Jingle.ChangesetView, "error.json", changeset: changeset)
     end
   end
 

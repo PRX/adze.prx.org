@@ -1,7 +1,7 @@
-defmodule Adze.API.CampaignController do
-  use Adze.Web, :controller
+defmodule Jingle.API.CampaignController do
+  use Jingle.Web, :controller
 
-  alias Adze.API.Campaign
+  alias Jingle.API.Campaign
 
   def index(conn, _params) do
     campaigns = Repo.all(Campaign)
@@ -20,7 +20,7 @@ defmodule Adze.API.CampaignController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Adze.ChangesetView, "error.json", changeset: changeset)
+        |> render(Jingle.ChangesetView, "error.json", changeset: changeset)
     end
   end
 
@@ -39,7 +39,7 @@ defmodule Adze.API.CampaignController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Adze.ChangesetView, "error.json", changeset: changeset)
+        |> render(Jingle.ChangesetView, "error.json", changeset: changeset)
     end
   end
 

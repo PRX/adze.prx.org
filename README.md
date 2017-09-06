@@ -1,4 +1,4 @@
-# Adze.prx.org
+# Jingle.prx.org
 
 ## Description
 
@@ -11,7 +11,7 @@
 To get started, make sure you have completed the [Phoenix install guide](http://www.phoenixframework.org/docs/installation).  Then:
 ```
 # Get the code
-git clone git@github.com:PRX/porter.prx.org.git
+git clone git@github.com:PRX/jingle.prx.org.git
 
 # Install dependencies
 mix deps.get
@@ -45,35 +45,34 @@ docker-compose build
 
 # mount dev dependencies locally
 mkdir _build_docker_compose deps_docker_compose
-docker-compose run adze compile
+docker-compose run jingle compile
 
 # start the db and run migrations
-docker-compose start db
-docker-compose run adze migrate
+docker-compose run jingle migrate
 
 # now you can run a local server
 docker-compose up
-open http://adze.prx.docker
+open http://jingle.prx.docker
 
 # or run the tests
-docker-compose run adze test
+docker-compose run jingle test
 
 # or run a single test
-docker-compose run adze test test/controllers/api/root_controller_test.exs
+docker-compose run jingle test test/controllers/api/root_controller_test.exs
 ```
 
 ## Dependencies
 
-TODO: maybe feeder to get shows? AWS RDS? 
+TODO: maybe feeder to get shows? AWS RDS?
 
 ## Testing
 
 ```
 # Run all the tests
-docker-compose run adze test
+docker-compose run jingle test
 
 # Run a specific test
-docker-compose run adze test test/controllers/api/root_controller_test.exs
+docker-compose run jingle test test/controllers/api/root_controller_test.exs
 ```
 
 ## License

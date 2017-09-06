@@ -1,4 +1,4 @@
-defmodule Adze.Repo.Migrations.CreateApi.Campaign do
+defmodule Jingle.Repo.Migrations.CreateApi.Campaign do
   use Ecto.Migration
 
   def change do

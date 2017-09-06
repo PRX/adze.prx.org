@@ -1,7 +1,7 @@
-defmodule Adze.API.ShowControllerTest do
-  use Adze.ConnCase
+defmodule Jingle.API.ShowControllerTest do
+  use Jingle.ConnCase
 
-  alias Adze.API.Show
+  alias Jingle.API.Show
   @valid_attrs %{name: "some content", network: "some content", notes: "some content", rate: "some content", recording_day: "some content", structure: "some content"}
   @invalid_attrs %{}
 

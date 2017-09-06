@@ -1,8 +1,8 @@
-defmodule Adze.Mixfile do
+defmodule Jingle.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :adze,
+    [app: :jingle,
      version: "0.0.1",
      elixir: "~> 1.2",
      elixirc_paths: elixirc_paths(Mix.env),
@@ -17,7 +17,7 @@ defmodule Adze.Mixfile do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [mod: {Adze, []},
+    [mod: {Jingle, []},
      applications: apps(Mix.env)]
   end
   defp apps(:dev), do: [:dotenv | apps()]

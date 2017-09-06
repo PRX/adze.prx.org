@@ -1,4 +1,4 @@
-defmodule Adze.Repo.Migrations.CreateApi.Sponsor do
+defmodule Jingle.Repo.Migrations.CreateApi.Sponsor do
   use Ecto.Migration
 
   def change do

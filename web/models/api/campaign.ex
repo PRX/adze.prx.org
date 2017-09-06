@@ -1,5 +1,5 @@
-defmodule Adze.API.Campaign do
-  use Adze.Web, :model
+defmodule Jingle.API.Campaign do
+  use Jingle.Web, :model
 
   schema "campaigns" do
     field :start_date, Ecto.Date
@@ -7,8 +7,8 @@ defmodule Adze.API.Campaign do
     field :copy, :string
     field :zone, :string
 
-    belongs_to :sponsor, Adze.API.Sponsor
-    belongs_to :show, Adze.API.Show
+    belongs_to :sponsor, Jingle.API.Sponsor
+    belongs_to :show, Jingle.API.Show
     timestamps()
   end
 

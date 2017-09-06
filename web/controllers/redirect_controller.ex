@@ -1,7 +1,7 @@
-defmodule Adze.RedirectController do
-  use Adze.Web, :controller
+defmodule Jingle.RedirectController do
+  use Jingle.Web, :controller
 
-  import Adze.Router.Helpers
+  import Jingle.Router.Helpers
 
   def index(conn, _params) do
     redirect conn, to: api_root_path(conn, :index)

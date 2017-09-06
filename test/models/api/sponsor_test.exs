@@ -1,7 +1,7 @@
-defmodule Adze.API.SponsorTest do
-  use Adze.ModelCase
+defmodule Jingle.API.SponsorTest do
+  use Jingle.ModelCase
 
-  alias Adze.API.Sponsor
+  alias Jingle.API.Sponsor
 
   @valid_attrs %{billing_info: "some content", name: "some content", notes: "some content"}
   @invalid_attrs %{}
