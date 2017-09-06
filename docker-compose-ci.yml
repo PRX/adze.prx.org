@@ -4,7 +4,7 @@ jingle:
     - db
   command: test
   env_file:
-    - .env
+    - env-example
   environment:
     VIRTUAL_HOST: jingle.prx.docker
     MIX_ENV: test
@@ -12,6 +12,6 @@ jingle:
 db:
   image: postgres
   env_file:
-    - .env
+    - env-example
   ports:
     - "5432:5432"

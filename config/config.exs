@@ -20,12 +20,17 @@ config :jingle, Jingle.Endpoint,
 # Configures the repository
 config :jingle, Jingle.Repo,
  adapter: Ecto.Adapters.Postgres,
- database: System.get_env("DB_ENV_POSTGRES_DATABASE"),
- username: System.get_env("DB_ENV_POSTGRES_USER"),
- password: System.get_env("DB_ENV_POSTGRES_PASSWORD"),
- hostname: System.get_env("DB_PORT_5432_TCP_ADDR"),
- port: System.get_env("DB_PORT_5432_TCP_PORT"),
- pool_size: String.to_integer(System.get_env("DB_POOL_SIZE") || "2")
+ database: System.get_env("DB_ENV_POSTGRES_DATABASE") || "${DB_ENV_POSTGRES_DATABASE}",
+ username: System.get_env("DB_ENV_POSTGRES_USER") || "${DB_ENV_POSTGRES_USER}",
+ password: System.get_env("DB_ENV_POSTGRES_PASSWORD") || "${DB_ENV_POSTGRES_PASSWORD}",
+ hostname: System.get_env("DB_PORT_5432_TCP_ADDR") || "${DB_PORT_5432_TCP_ADDR}",
+ port: System.get_env("DB_PORT_5432_TCP_PORT") || "${DB_PORT_5432_TCP_PORT}",
+ pool_size: System.get_env("DB_POOL_SIZE") || "${DB_POOL_SIZE}"
+
+ # Environment config (precompiled OR from env variables)
+ # MUST release with RELX_REPLACE_OS_VARS=true
+config :jingle, :env_config, 
+  id_host: System.get_env("ID_HOST") || "${ID_HOST}"
 
 # Configures Elixir's Logger
 config :logger, :console,

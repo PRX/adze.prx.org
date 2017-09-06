@@ -11,7 +11,7 @@
 To get started, make sure you have completed the [Phoenix install guide](http://www.phoenixframework.org/docs/installation).  Then:
 ```
 # Get the code
-git clone git@github.com:PRX/porter.prx.org.git
+git clone git@github.com:PRX/jingle.prx.org.git
 
 # Install dependencies
 mix deps.get
@@ -48,7 +48,6 @@ mkdir _build_docker_compose deps_docker_compose
 docker-compose run jingle compile
 
 # start the db and run migrations
-docker-compose start db
 docker-compose run jingle migrate
 
 # now you can run a local server
@@ -64,7 +63,7 @@ docker-compose run jingle test test/controllers/api/root_controller_test.exs
 
 ## Dependencies
 
-TODO: maybe feeder to get shows? AWS RDS? 
+TODO: maybe feeder to get shows? AWS RDS?
 
 ## Testing
 
