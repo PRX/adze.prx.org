@@ -24,8 +24,8 @@ erl_crash.dump
 /config/prod.secret.exs
 
 # Configuration
-.env
-
+*.env
+*.zip
 # Docker-compose mounts
 /_build_docker_compose
 /deps_docker_compose

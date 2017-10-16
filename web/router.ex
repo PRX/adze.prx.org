@@ -18,10 +18,6 @@ defmodule Jingle.Router do
     plug PrxAuth.Plug, required: true, iss: &Jingle.Router.id_host/0
   end
 
-  # pipeline :authorized do
-  #   plug PrxAuth.Plug, required: true
-  # end
-
   scope "/", Jingle do
     pipe_through :api
 
