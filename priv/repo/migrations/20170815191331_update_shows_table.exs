@@ -4,11 +4,11 @@ defmodule Jingle.Repo.Migrations.UpdateShowsTable do
   def change do
     alter table(:shows) do
       add :feeder_podcast_id, :integer
-      add :jinglerk_site_id, :integer
+      add :adzerk_site_id, :integer
     end
 
     alter table(:sponsors) do
-      add :jinglerk_advertiser_id, :integer
+      add :adzerk_advertiser_id, :integer
     end
 
     alter table(:campaigns) do
