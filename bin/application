@@ -4,7 +4,7 @@ PROCESS=
 CMD_ARGS=
 
 ApplicationUsage () {
-  echo "usage: application [ help | test | web | mix | compile | migrate | -- ]"
+  echo "usage: application [ help | test | web | mix | compile | migrate | console | -- ]"
 }
 
 ApplicationParseOpts () {
@@ -47,6 +47,8 @@ ApplicationRun () {
     CMD="mix"
   elif [ "$PROCESS" = "compile" ] ; then
     CMD="mix do deps.get, compile"
+  elif [ "$PROCESS" = "console" ] ; then
+    CMD="iex -S mix"
   elif [ "$PROCESS" = "--" ] ; then
     UpdateEnvironment
     CMD=
