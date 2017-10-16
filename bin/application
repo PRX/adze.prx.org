@@ -1,0 +1,67 @@
+#!/bin/sh
+
+PROCESS=
+CMD_ARGS=
+
+ApplicationUsage () {
+  echo "usage: application [ help | test | web | mix | compile | migrate | console | -- ]"
+}
+
+ApplicationParseOpts () {
+  PROCESS=$1
+  shift
+  CMD_ARGS=$*
+}
+
+UpdateEnvironment () {
+  if [ -z "$LOCAL_ENV" ]; then
+    IFS=$'\n'
+    for item in `aws-secrets-get`; do
+      export "$item"
+    done
+    unset IFS
+  fi
+}
+
+WaitForPostgres () {
+  export PGPASSWORD="$DB_ENV_POSTGRES_PASSWORD"
+  until psql -h "$DB_PORT_5432_TCP_ADDR" -p "$DB_PORT_5432_TCP_PORT" -U "$DB_ENV_POSTGRES_USER" -c '\l' &> /dev/null; do
+    >&2 echo "Postgres is unavailable - sleeping"
+    sleep 3;
+  done
+}
+
+ApplicationRun () {
+  CMD=
+  if [ "$PROCESS" = "help" ] ; then
+    ApplicationUsage
+    exit
+  elif [ "$PROCESS" = "web" ] ; then
+    UpdateEnvironment
+    CMD="mix phoenix.server"
+  elif [ "$PROCESS" = "test" ] ; then
+    CMD="mix test"
+  elif [ "$PROCESS" = "migrate" ] ; then
+    CMD="mix ecto.migrate"
+  elif [ "$PROCESS" = "mix" ] ; then
+    CMD="mix"
+  elif [ "$PROCESS" = "compile" ] ; then
+    CMD="mix do deps.get, compile"
+  elif [ "$PROCESS" = "console" ] ; then
+    CMD="iex -S mix"
+  elif [ "$PROCESS" = "--" ] ; then
+    UpdateEnvironment
+    CMD=
+  else
+    echo "ERROR: $PROCESS is not a valid command."
+    ApplicationUsage
+    exit
+  fi
+
+  WaitForPostgres
+
+  exec $CMD $CMD_ARGS
+}
+
+ApplicationParseOpts $*
+ApplicationRun

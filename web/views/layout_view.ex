@@ -1,3 +1,3 @@
-defmodule Adze.LayoutView do
-  use Adze.Web, :view
+defmodule Jingle.LayoutView do
+  use Jingle.Web, :view
 end

@@ -1,4 +1,4 @@
-defmodule Adze.ErrorHelpers do
+defmodule Jingle.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -32,9 +32,9 @@ defmodule Adze.ErrorHelpers do
     #     dgettext "errors", "is invalid"
     #
     if count = opts[:count] do
-      Gettext.dngettext(Adze.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(Jingle.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(Adze.Gettext, "errors", msg, opts)
+      Gettext.dgettext(Jingle.Gettext, "errors", msg, opts)
     end
   end
 end

@@ -1,5 +1,5 @@
-defmodule Adze.Router do
-  use Adze.Web, :router
+defmodule Jingle.Router do
+  use Jingle.Web, :router
 
   # pipeline :browser do
   #   plug :accepts, ["html"]
@@ -13,11 +13,12 @@ defmodule Adze.Router do
     plug :accepts, ["json", "hal"]
   end
 
-  # pipeline :authorized do
-  #   plug PrxAuth.Plug, required: true
-  # end
+  def id_host, do: Env.get(:id_host)
+  pipeline :authorized do
+    plug PrxAuth.Plug, required: true, iss: &Jingle.Router.id_host/0
+  end
 
-  scope "/", Adze do
+  scope "/", Jingle do
     pipe_through :api
 
     get "/", RedirectController, :index
@@ -25,15 +26,19 @@ defmodule Adze.Router do
     get "/api/v1", API.RootController, :index, as: :api_root
   end
 
-  scope "/api/v1", Adze.API, as: :api do
+  scope "/api/v1", Jingle.API, as: :api do
     pipe_through :api
-    # pipe_through :authorized
+    pipe_through :authorized
 
-    resources "/sponsors", SponsorController, except: [:new, :edit]
-    # resources "/shows", ShowController, except: [:new, :edit]
-    # resources "/campaigns", CampaignController, except: [:new, :edit]
+    resources "/sponsors", SponsorController, except: [:new, :edit] do
+      resources "/campaigns", CampaignController, only: [:index]
+    end
+    resources "/shows", ShowController, except: [:new, :edit] do
+      resources "/campaigns", CampaignController, only: [:index]
+    end
+    resources "/campaigns", CampaignController, except: [:new, :edit]
+
     # resources "/creatives", CreativeController, except: [:new, :edit]
-    #
   end
 
 end

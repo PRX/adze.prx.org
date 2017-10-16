@@ -1,8 +1,8 @@
-defmodule Adze.Mixfile do
+defmodule Jingle.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :adze,
+    [app: :jingle,
      version: "0.0.1",
      elixir: "~> 1.2",
      elixirc_paths: elixirc_paths(Mix.env),
@@ -17,10 +17,15 @@ defmodule Adze.Mixfile do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [mod: {Adze, []},
-     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+    [mod: {Jingle, []},
+     applications: apps(Mix.env)]
   end
+  defp apps(:dev), do: [:dotenv | apps()]
+  defp apps(_), do: apps()
+  defp apps, do: [
+    :phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
+    :phoenix_ecto, :postgrex, :prx_auth
+  ]
 
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "web", "test/support"]
@@ -36,8 +41,10 @@ defmodule Adze.Mixfile do
      {:postgrex, ">= 0.0.0"},
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
+     {:prx_auth, "~> 0.0.1"},
      {:gettext, "~> 0.11"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:dotenv, "~> 2.1", only: :dev}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

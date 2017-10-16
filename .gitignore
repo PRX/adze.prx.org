@@ -22,3 +22,10 @@ erl_crash.dump
 # secrets file as long as you replace its contents by environment
 # variables.
 /config/prod.secret.exs
+
+# Configuration
+*.env
+*.zip
+# Docker-compose mounts
+/_build_docker_compose
+/deps_docker_compose

@@ -1,4 +1,4 @@
-defmodule Adze.ChannelCase do
+defmodule Jingle.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -20,22 +20,22 @@ defmodule Adze.ChannelCase do
       # Import conveniences for testing with channels
       use Phoenix.ChannelTest
 
-      alias Adze.Repo
+      alias Jingle.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
 
 
       # The default endpoint for testing
-      @endpoint Adze.Endpoint
+      @endpoint Jingle.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Adze.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Jingle.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Adze.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Jingle.Repo, {:shared, self()})
     end
 
     :ok

@@ -1,3 +1,3 @@
-defmodule Adze.PageViewTest do
-  use Adze.ConnCase, async: true
+defmodule Jingle.PageViewTest do
+  use Jingle.ConnCase, async: true
 end
