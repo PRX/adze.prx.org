@@ -2,7 +2,7 @@ defmodule Jingle.CreativeControllerTest do
   use Jingle.ConnCase
 
   alias Jingle.API.Creative
-  @valid_attrs %{bit_rate: 42, channel_mode: "some content", content_type: "some content", duration: 42, filename: "some content", format: "some content", label: "some content", layer: 42, length: 42, size: 42, status: "some content", upload_path: "some content", zone: "some content"}
+  @valid_attrs %{bit_rate: 42, campaign_id: 42, channel_mode: "some content", content_type: "some content", duration: 42, filename: "some content", format: "some content", label: "some content", layer: 42, length: 42, size: 42, status: "some content", upload_path: "some content", zone: "some content"}
   @invalid_attrs %{}
 
   setup %{conn: conn} do
@@ -11,26 +11,30 @@ defmodule Jingle.CreativeControllerTest do
 
   test "lists all entries on index", %{conn: conn} do
     conn = get conn, api_creative_path(conn, :index)
-    assert json_response(conn, 200)["data"] == []
+    assert json_response(conn, 200)["_embedded"]["prx:items"]
+    assert json_response(conn, 200)["count"]
+
   end
 
   test "shows chosen resource", %{conn: conn} do
-    creative = Repo.insert! %Creative{}
+    creative = Repo.insert! %Creative{campaign_id: 42}
     conn = get conn, api_creative_path(conn, :show, creative)
-    assert json_response(conn, 200)["data"] == %{"id" => creative.id,
-      "status" => creative.status,
-      "filename" => creative.filename,
-      "zone" => creative.zone,
-      "size" => creative.size,
-      "content_type" => creative.content_type,
-      "label" => creative.label,
-      "length" => creative.length,
-      "layer" => creative.layer,
-      "bit_rate" => creative.bit_rate,
-      "duration" => creative.duration,
-      "channel_mode" => creative.channel_mode,
-      "upload_path" => creative.upload_path,
-      "format" => creative.format}
+    resp = json_response(conn, 200)
+    assert resp["id"] == creative.id
+    assert resp["status"] == creative.status
+    assert resp["filename"] == creative.filename
+    assert resp["zone"] == creative.zone
+    assert resp["size"] == creative.size
+    assert resp["content_type"] == creative.content_type
+    assert resp["label"] == creative.label
+    assert resp["length"] == creative.length
+    assert resp["layer"] == creative.layer
+    assert resp["bit_rate"] == creative.bit_rate
+    assert resp["duration"] == creative.duration
+    assert resp["channel_mode"] == creative.channel_mode
+    assert resp["upload_path"] == creative.upload_path
+    assert resp["format"] == creative.format
+    assert resp["_links"]["prx:campaign"]
   end
 
   test "renders page not found when id is nonexistent", %{conn: conn} do
@@ -41,7 +45,8 @@ defmodule Jingle.CreativeControllerTest do
 
   test "creates and renders resource when data is valid", %{conn: conn} do
     conn = post conn, api_creative_path(conn, :create), creative: @valid_attrs
-    assert json_response(conn, 201)["data"]["id"]
+    assert json_response(conn, 201)["label"]
+    assert json_response(conn, 201)["_links"]
     assert Repo.get_by(Creative, @valid_attrs)
   end
 
@@ -53,7 +58,7 @@ defmodule Jingle.CreativeControllerTest do
   test "updates and renders chosen resource when data is valid", %{conn: conn} do
     creative = Repo.insert! %Creative{}
     conn = put conn, api_creative_path(conn, :update, creative), creative: @valid_attrs
-    assert json_response(conn, 200)["data"]["id"]
+    assert json_response(conn, 200)["id"]
     assert Repo.get_by(Creative, @valid_attrs)
   end
 

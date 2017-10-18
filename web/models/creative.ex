@@ -25,7 +25,8 @@ defmodule Jingle.API.Creative do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:status, :filename, :zone, :size, :content_type, :label, :length, :layer, :bit_rate, :duration, :channel_mode, :upload_path, :format])
-    |> validate_required([:status, :filename, :zone, :size, :content_type, :label, :length, :layer, :bit_rate, :duration, :channel_mode, :upload_path, :format])
+    |> cast(params, [:campaign_id, :status, :filename, :zone, :size, :content_type, :label, :length, :layer, :bit_rate, :duration, :channel_mode, :upload_path, :format])
+    |> validate_required([:campaign_id, :status, :filename, :zone, :size, :content_type, :label, :length, :layer, :bit_rate, :duration, :channel_mode, :upload_path, :format])
+    |> assoc_constraint(:campaign)
   end
 end

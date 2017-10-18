@@ -11,7 +11,8 @@ defmodule Jingle.API.SponsorControllerTest do
 
   test "lists all entries on index", %{conn: conn} do
     conn = get conn, api_sponsor_path(conn, :index)
-    assert json_response(conn, 200)["_embedded"] == %{"prx:items" => []}
+    assert json_response(conn, 200)["_embedded"]["prx:items"]
+    assert json_response(conn, 200)["count"]
   end
 
   test "shows chosen resource", %{conn: conn} do

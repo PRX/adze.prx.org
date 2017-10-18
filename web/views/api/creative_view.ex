@@ -12,14 +12,7 @@ defmodule Jingle.API.CreativeView do
   end
 
   def render("show.json", %{conn: conn, creative: creative}) do
-    campaign = %{
-      sponsor: creative.campaign.sponsor_id,
-      show: creative.campaign.show_id,
-      start_date: creative.campaign.start_date,
-      end_date: creative.campaign.end_date
-    }
     creative_json(creative, conn)
-    |> Map.put(:campaign, campaign)
   end
 
   defp creative_json(creative, conn) do
