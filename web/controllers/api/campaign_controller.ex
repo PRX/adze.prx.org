@@ -1,4 +1,3 @@
-require IEx
 defmodule Jingle.API.CampaignController do
   use Jingle.Web, :controller
 
