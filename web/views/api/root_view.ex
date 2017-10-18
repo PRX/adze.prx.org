@@ -25,7 +25,7 @@ defmodule Jingle.API.RootView do
           templated: true,
         }],
         "prx:shows": [%{
-          title: "Get a paged collection of sponsorship shows",
+          title: "Get a paged collection of shows",
           profile: "http://meta.prx.org/model/show",
           href: api_show_path(conn, :index) <> "{?page,per}",
           templated: true,
@@ -46,6 +46,18 @@ defmodule Jingle.API.RootView do
           title: "Get info for a single sponsor",
           profile: "http://meta.prx.org/model/sponsor",
           href: fix_path(api_sponsor_path(conn, :show, "{id}")),
+          templated: true,
+        }],
+        "prx:creatives": [%{
+          title: "Get a paged collection of creatives",
+          profile: "http://meta.prx.org/model/creative",
+          href: api_creative_path(conn, :index) <> "{?page,per}",
+          templated: true,
+        }],
+        "prx:creative": [%{
+          title: "Get info for a single creative",
+          profile: "http://meta.prx.org/model/creative",
+          href: fix_path(api_creative_path(conn, :show, "{id}")),
           templated: true,
         }],
 
