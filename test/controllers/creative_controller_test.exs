@@ -13,7 +13,6 @@ defmodule Jingle.CreativeControllerTest do
     conn = get conn, api_creative_path(conn, :index)
     assert json_response(conn, 200)["_embedded"]["prx:items"]
     assert json_response(conn, 200)["count"]
-
   end
 
   test "shows chosen resource", %{conn: conn} do
