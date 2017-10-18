@@ -10,8 +10,9 @@ alias Jingle.Repo
 alias Jingle.API.Sponsor
 alias Jingle.API.Campaign
 alias Jingle.API.Show
+alias Jingle.API.Creative
 
-Enum.each([Sponsor, Campaign, Show], fn f -> Repo.delete_all(f) end)
+Enum.each([Sponsor, Campaign, Show, Creative], fn f -> Repo.delete_all(f) end)
 
 blue_apron = Repo.insert! %Sponsor{
   name: "Blue Apron",
@@ -58,9 +59,24 @@ zip_campaign = Repo.insert! %Campaign{
   start_date: Ecto.Date.cast!("2017-06-27"),
   end_date: Ecto.Date.cast!("2017-07-27"),
   copy: "hire the people!",
-  zone: "Midroll",
+  zone: "Midroll"
 }
 
+ba_creative = Repo.insert! %Creative{
+  campaign_id: ba_campaign.id,
+  status: "complete",
+  label: "Postroll 2 99pi Blue Apron",
+  zone: "Postroll 2",
+  filename: "dummy1"
+}
+
+zip_creative = Repo.insert! %Creative{
+  campaign_id: zip_campaign.id,
+  status: "complete",
+  label: "Preroll 1 DogTalk Zip Recruiter",
+  zone: "Preroll 1",
+  filename: "dummy2"
+}
 
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.

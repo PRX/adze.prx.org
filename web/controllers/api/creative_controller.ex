@@ -16,7 +16,7 @@ defmodule Jingle.API.CreativeController do
         conn
         |> put_status(:created)
         |> put_resp_header("location", api_creative_path(conn, :show, creative))
-        |> render("show.json", creative: creative)
+        |> render("show.json", creative: Repo.preload(creative, :campaign))
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
@@ -26,7 +26,7 @@ defmodule Jingle.API.CreativeController do
 
   def show(conn, %{"id" => id}) do
     creative = Repo.get!(Creative, id)
-    render(conn, "show.json", creative: creative)
+    render(conn, "show.json", creative: Repo.preload(creative, :campaign))
   end
 
   def update(conn, %{"id" => id, "creative" => creative_params}) do
@@ -35,7 +35,7 @@ defmodule Jingle.API.CreativeController do
 
     case Repo.update(changeset) do
       {:ok, creative} ->
-        render(conn, "show.json", creative: creative)
+        render(conn, "show.json", creative: Repo.preload(creative, :campaign))
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
