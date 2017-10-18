@@ -1,14 +1,6 @@
 defmodule Jingle.Router do
   use Jingle.Web, :router
 
-  # pipeline :browser do
-  #   plug :accepts, ["html"]
-  #   plug :fetch_session
-  #   plug :fetch_flash
-  #   plug :protect_from_forgery
-  #   plug :put_secure_browser_headers
-  # end
-
   pipeline :api do
     plug :accepts, ["json", "hal"]
   end
@@ -28,17 +20,22 @@ defmodule Jingle.Router do
 
   scope "/api/v1", Jingle.API, as: :api do
     pipe_through :api
-    pipe_through :authorized
+    # pipe_through :authorized
 
     resources "/sponsors", SponsorController, except: [:new, :edit] do
       resources "/campaigns", CampaignController, only: [:index]
     end
+
     resources "/shows", ShowController, except: [:new, :edit] do
       resources "/campaigns", CampaignController, only: [:index]
     end
-    resources "/campaigns", CampaignController, except: [:new, :edit]
 
-    # resources "/creatives", CreativeController, except: [:new, :edit]
+    resources "/campaigns", CampaignController, except: [:new, :edit] do
+      resources "/creatives", CreativeController, except: [:new, :edit]
+    end
+
+    resources "/creatives", CreativeController, except: [:new, :edit]
+
   end
 
 end
