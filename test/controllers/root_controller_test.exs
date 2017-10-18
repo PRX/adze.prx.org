@@ -7,6 +7,11 @@ defmodule Castle.API.RootControllerTest do
 
   test "lists version and available paths", %{conn: conn} do
     conn = get conn, api_root_path(conn, :index)
-    assert json_response(conn, 200)["version"] == "v1"
+    resp = json_response(conn, 200)
+    assert resp["version"] == "v1"
+    assert resp["_links"]["prx:sponsors"]
+    assert resp["_links"]["prx:campaigns"]
+    assert resp["_links"]["prx:shows"]
+    assert resp["_links"]["prx:creatives"]
   end
 end
