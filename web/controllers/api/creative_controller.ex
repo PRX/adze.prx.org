@@ -3,9 +3,14 @@ defmodule Jingle.API.CreativeController do
 
   alias Jingle.API.Creative
 
+  def index(conn, %{"campaign_id" => campaign_id}) do
+    creatives = Repo.all(from c in Creative, where: c.campaign_id == ^campaign_id)
+    render(conn, "index.json", creatives: Repo.preload(creatives, :campaign))
+  end
+
   def index(conn, _params) do
     creatives = Repo.all(Creative)
-    render(conn, "index.json", creatives: creatives)
+    render(conn, "index.json", creatives: Repo.preload(creatives, :campaign))
   end
 
   def create(conn, %{"creative" => creative_params}) do
