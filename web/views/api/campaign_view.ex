@@ -34,6 +34,10 @@ defmodule Jingle.API.CampaignView do
         "prx:show": %{
           href: api_show_path(conn, :show, campaign.show_id),
           templated: true
+        },
+        "prx:creatives": %{
+          href: api_campaign_creative_path(conn, :index, campaign.id),
+          templated: true
         }
       }
     }

@@ -1,7 +1,18 @@
+require IEx
 defmodule Jingle.API.CampaignController do
   use Jingle.Web, :controller
 
   alias Jingle.API.Campaign
+
+  def index(conn, %{"sponsor_id" => sponsor_id}) do
+    campaigns = Repo.all(from c in Campaign, where: c.sponsor_id == ^sponsor_id)
+    render(conn, "index.json", campaigns: campaigns)
+  end
+
+  def index(conn, %{"show_id" => show_id}) do
+    campaigns = Repo.all(from c in Campaign, where: c.show_id == ^show_id)
+    render(conn, "index.json", campaigns: campaigns)
+  end
 
   def index(conn, _params) do
     campaigns = Repo.all(Campaign)
@@ -26,7 +37,7 @@ defmodule Jingle.API.CampaignController do
 
   def show(conn, %{"id" => id}) do
     campaign = Repo.get!(Campaign, id)
-    render(conn, "show.json", campaign: Repo.preload(campaign, :sponsor))
+    render(conn, "show.json", campaign: campaign)
   end
 
   def update(conn, %{"id" => id, "campaign" => campaign_params}) do
