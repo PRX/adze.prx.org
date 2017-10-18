@@ -2,11 +2,11 @@ defmodule Jingle.API.CreativeView do
   use Jingle.Web, :view
 
   def render("index.json", %{creatives: creatives}) do
-    %{data: render_many(creatives, Jingle.CreativeView, "creative.json")}
+    %{data: render_many(creatives, Jingle.API.CreativeView, "creative.json")}
   end
 
   def render("show.json", %{creative: creative}) do
-    %{data: render_one(creative, Jingle.CreativeView, "creative.json")}
+    %{data: render_one(creative, Jingle.API.CreativeView, "creative.json")}
   end
 
   def render("creative.json", %{creative: creative}) do
