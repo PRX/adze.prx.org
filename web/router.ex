@@ -28,7 +28,7 @@ defmodule Jingle.Router do
 
   scope "/api/v1", Jingle.API, as: :api do
     pipe_through :api
-    pipe_through :authorized
+    # pipe_through :authorized
 
     resources "/sponsors", SponsorController, except: [:new, :edit] do
       resources "/campaigns", CampaignController, only: [:index]
