@@ -27,7 +27,6 @@ defmodule Jingle.API.CreativeView do
       length: creative.length,
       layer: creative.layer,
       bit_rate: creative.bit_rate,
-      duration: creative.duration,
       channel_mode: creative.channel_mode,
       upload_path: creative.upload_path,
       format: creative.format,

@@ -2,7 +2,7 @@ defmodule Jingle.CreativeControllerTest do
   use Jingle.ConnCase
 
   alias Jingle.API.Creative
-  @valid_attrs %{bit_rate: 42, campaign_id: 42, channel_mode: "some content", content_type: "some content", duration: 42, filename: "some content", format: "some content", label: "some content", layer: 42, length: 42, size: 42, status: "some content", upload_path: "some content", zone: "some content"}
+  @valid_attrs %{bit_rate: 42, campaign_id: 42, channel_mode: "some content", content_type: "some content", filename: "some content", format: "some content", label: "some content", layer: 42, length: 42, size: 42, status: "some content", upload_path: "some content", zone: "some content"}
   @invalid_attrs %{}
 
   setup %{conn: conn} do
@@ -29,7 +29,6 @@ defmodule Jingle.CreativeControllerTest do
     assert resp["length"] == creative.length
     assert resp["layer"] == creative.layer
     assert resp["bit_rate"] == creative.bit_rate
-    assert resp["duration"] == creative.duration
     assert resp["channel_mode"] == creative.channel_mode
     assert resp["upload_path"] == creative.upload_path
     assert resp["format"] == creative.format

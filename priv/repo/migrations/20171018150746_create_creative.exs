@@ -10,10 +10,9 @@ defmodule Jingle.Repo.Migrations.CreateCreative do
       add :size, :integer
       add :content_type, :string
       add :label, :string
-      add :length, :integer
+      add :length, :decimal
       add :layer, :integer
       add :bit_rate, :integer
-      add :duration, :integer
       add :channel_mode, :string
       add :upload_path, :string
       add :format, :string
