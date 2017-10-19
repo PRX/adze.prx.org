@@ -23,6 +23,10 @@ UpdateEnvironment () {
   fi
 }
 
+ApplicationUpdate () {
+  mix do deps.get, compile, ecto.migrate
+}
+
 WaitForPostgres () {
   export PGPASSWORD="$DB_ENV_POSTGRES_PASSWORD"
   until psql -h "$DB_PORT_5432_TCP_ADDR" -p "$DB_PORT_5432_TCP_PORT" -U "$DB_ENV_POSTGRES_USER" -c '\l' &> /dev/null; do
@@ -59,6 +63,7 @@ ApplicationRun () {
   fi
 
   WaitForPostgres
+  ApplicationUpdate
 
   exec $CMD $CMD_ARGS
 }
