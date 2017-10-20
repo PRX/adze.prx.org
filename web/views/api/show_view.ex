@@ -1,5 +1,3 @@
-require IEx
-
 defmodule Jingle.API.ShowView do
   use Jingle.Web, :view
 

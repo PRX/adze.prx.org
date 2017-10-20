@@ -9,6 +9,7 @@ defmodule Jingle.API.Campaign do
 
     belongs_to :sponsor, Jingle.API.Sponsor
     belongs_to :show, Jingle.API.Show
+    has_many :creatives, Jingle.API.Creative
     timestamps()
   end
 

@@ -11,13 +11,8 @@ defmodule Jingle.API.CampaignControllerTest do
 
   test "lists all entries on index", %{conn: conn} do
     conn = get conn, api_campaign_path(conn, :index)
-    assert json_response(conn, 200) == %{
-      "_embedded" => %{
-        "prx:items" => []
-      },
-      "count" => 0,
-      "total" => 0
-    }
+    assert json_response(conn, 200)["_embedded"]["prx:items"]
+    assert json_response(conn, 200)["count"]
   end
 
   test "shows chosen resource", %{conn: conn} do
