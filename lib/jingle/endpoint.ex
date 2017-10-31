@@ -38,5 +38,12 @@ defmodule Jingle.Endpoint do
     key: "_jingle_key",
     signing_salt: "iT1+wCQW"
 
+  # CORS support
+  plug Corsica,
+    origins: ~r/.*\.prx\.(?:org|dev|tech|docker)$/,
+    allow_headers: ~w(Authorization),
+    allow_methods: ~w(HEAD GET),
+    allow_credentials: true
+
   plug Jingle.Router
 end

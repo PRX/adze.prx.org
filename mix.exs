@@ -24,7 +24,7 @@ defmodule Jingle.Mixfile do
   defp apps(_), do: apps()
   defp apps, do: [
     :phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-    :phoenix_ecto, :postgrex, :prx_auth
+    :phoenix_ecto, :postgrex, :corsica, :prx_auth
   ]
 
   # Specifies which paths to compile per environment.
@@ -41,6 +41,7 @@ defmodule Jingle.Mixfile do
      {:postgrex, ">= 0.0.0"},
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
+     {:corsica, "~> 0.5"},
      {:prx_auth, "~> 0.0.1"},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
