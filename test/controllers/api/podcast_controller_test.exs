@@ -1,7 +1,7 @@
-defmodule Jingle.API.ShowControllerTest do
+defmodule Jingle.API.PodcastControllerTest do
   use Jingle.ConnCase
 
-  alias Jingle.API.Show
+  alias Jingle.API.Podcast
   @valid_attrs %{name: "some content", network: "some content", notes: "some content", rate: "some content", recording_day: "some content", structure: "some content"}
   @invalid_attrs %{}
 
@@ -10,51 +10,51 @@ defmodule Jingle.API.ShowControllerTest do
   end
 
   test "lists all entries on index", %{conn: conn} do
-    conn = get conn, api_show_path(conn, :index)
+    conn = get conn, api_podcast_path(conn, :index)
     assert json_response(conn, 200)["_embedded"]["prx:items"]
     assert json_response(conn, 200)["count"]
   end
 
   test "shows chosen resource", %{conn: conn} do
-    show = Repo.insert! %Show{}
-    conn = get conn, api_show_path(conn, :show, show)
-    assert json_response(conn, 200)["id"] == show.id
+    podcast = Repo.insert! %Podcast{}
+    conn = get conn, api_podcast_path(conn, :show, podcast)
+    assert json_response(conn, 200)["id"] == podcast.id
   end
 
   test "renders page not found when id is nonexistent", %{conn: conn} do
     assert_error_sent 404, fn ->
-      get conn, api_show_path(conn, :show, -1)
+      get conn, api_podcast_path(conn, :show, -1)
     end
   end
 
   test "creates and renders resource when data is valid", %{conn: conn} do
-    conn = post conn, api_show_path(conn, :create), show: @valid_attrs
+    conn = post conn, api_podcast_path(conn, :create), podcast: @valid_attrs
     assert json_response(conn, 201)["id"]
-    assert Repo.get_by(Show, @valid_attrs)
+    assert Repo.get_by(Podcast, @valid_attrs)
   end
 
   test "does not create resource and renders errors when data is invalid", %{conn: conn} do
-    conn = post conn, api_show_path(conn, :create), show: @invalid_attrs
+    conn = post conn, api_podcast_path(conn, :create), podcast: @invalid_attrs
     assert json_response(conn, 422)["errors"] != %{}
   end
 
   test "updates and renders chosen resource when data is valid", %{conn: conn} do
-    show = Repo.insert! %Show{}
-    conn = put conn, api_show_path(conn, :update, show), show: @valid_attrs
+    podcast = Repo.insert! %Podcast{}
+    conn = put conn, api_podcast_path(conn, :update, podcast), podcast: @valid_attrs
     assert json_response(conn, 200)["id"]
-    assert Repo.get_by(Show, @valid_attrs)
+    assert Repo.get_by(Podcast, @valid_attrs)
   end
 
   test "does not update chosen resource and renders errors when data is invalid", %{conn: conn} do
-    show = Repo.insert! %Show{}
-    conn = put conn, api_show_path(conn, :update, show), show: @invalid_attrs
+    podcast = Repo.insert! %Podcast{}
+    conn = put conn, api_podcast_path(conn, :update, podcast), podcast: @invalid_attrs
     assert json_response(conn, 422)["errors"] != %{}
   end
 
   test "deletes chosen resource", %{conn: conn} do
-    show = Repo.insert! %Show{}
-    conn = delete conn, api_show_path(conn, :delete, show)
+    podcast = Repo.insert! %Podcast{}
+    conn = delete conn, api_podcast_path(conn, :delete, podcast)
     assert response(conn, 204)
-    refute Repo.get(Show, show.id)
+    refute Repo.get(Podcast, podcast.id)
   end
 end

@@ -7,7 +7,7 @@ defmodule Jingle.RootControllerTest do
     assert resp["version"] == "v1"
     assert resp["_links"]["prx:sponsors"]
     assert resp["_links"]["prx:campaigns"]
-    assert resp["_links"]["prx:shows"]
+    assert resp["_links"]["prx:podcasts"]
     assert resp["_links"]["prx:creatives"]
   end
 end

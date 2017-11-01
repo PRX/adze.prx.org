@@ -1,8 +1,8 @@
-defmodule Jingle.Repo.Migrations.UpdateShowsTable do
+defmodule Jingle.Repo.Migrations.UpdatePodcastsTable do
   use Ecto.Migration
 
   def change do
-    alter table(:shows) do
+    alter table(:podcasts) do
       add :feeder_podcast_id, :integer
       add :adzerk_site_id, :integer
     end

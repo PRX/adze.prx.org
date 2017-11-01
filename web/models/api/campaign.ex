@@ -8,7 +8,7 @@ defmodule Jingle.API.Campaign do
     field :zone, :string
 
     belongs_to :sponsor, Jingle.API.Sponsor
-    belongs_to :show, Jingle.API.Show
+    belongs_to :podcast, Jingle.API.Podcast
     has_many :creatives, Jingle.API.Creative
     timestamps()
   end
@@ -18,8 +18,8 @@ defmodule Jingle.API.Campaign do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:sponsor_id, :show_id, :start_date, :end_date, :copy, :zone])
-    |> validate_required([:sponsor_id, :show_id, :start_date, :end_date, :copy, :zone])
+    |> cast(params, [:sponsor_id, :podcast_id, :start_date, :end_date, :copy, :zone])
+    |> validate_required([:sponsor_id, :podcast_id, :start_date, :end_date, :copy, :zone])
     |> assoc_constraint(:sponsor)
   end
 end

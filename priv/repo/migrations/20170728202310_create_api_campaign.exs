@@ -4,7 +4,7 @@ defmodule Jingle.Repo.Migrations.CreateApi.Campaign do
   def change do
     create table(:campaigns) do
       add :sponsor_id, :integer
-      add :show_id, :integer
+      add :podcast_id, :integer
       add :start_date, :date
       add :end_date, :date
       add :copy, :text

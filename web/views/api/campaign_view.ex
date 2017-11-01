@@ -11,7 +11,7 @@ defmodule Jingle.API.CampaignView do
     }
   end
 
-  def render("show.json", %{conn: conn, campaign: campaign}) do
+  def render("podcast.json", %{conn: conn, campaign: campaign}) do
     campaign_json(campaign, conn)
   end
 
@@ -31,8 +31,8 @@ defmodule Jingle.API.CampaignView do
           href: api_sponsor_path(conn, :show, campaign.sponsor_id),
           templated: true
         },
-        "prx:show": %{
-          href: api_show_path(conn, :show, campaign.show_id),
+        "prx:podcast": %{
+          href: api_podcast_path(conn, :show, campaign.podcast_id),
           templated: true
         },
         "prx:creatives": %{
