@@ -21,6 +21,7 @@ defmodule Jingle.Mixfile do
      applications: apps(Mix.env)]
   end
   defp apps(:dev), do: [:dotenv | apps()]
+  defp apps(:test), do: [:dotenv | apps()]
   defp apps(_), do: apps()
   defp apps, do: [
     :phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
@@ -44,7 +45,7 @@ defmodule Jingle.Mixfile do
      {:prx_auth, "~> 0.0.1"},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:dotenv, "~> 2.1", only: :dev}]
+     {:dotenv, "~> 2.1", only: [:dev, :test]}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
