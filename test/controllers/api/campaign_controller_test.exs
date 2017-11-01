@@ -2,7 +2,7 @@ defmodule Jingle.API.CampaignControllerTest do
   use Jingle.ConnCase
 
   alias Jingle.API.Campaign
-  @valid_attrs %{copy: "some content", end_date: %{day: 17, month: 4, year: 2010}, show_id: 42, sponsor_id: 42, start_date: %{day: 17, month: 4, year: 2010}, zone: "some content"}
+  @valid_attrs %{copy: "some content", end_date: %{day: 17, month: 4, year: 2010}, podcast_id: 42, sponsor_id: 42, start_date: %{day: 17, month: 4, year: 2010}, zone: "some content"}
   @invalid_attrs %{}
 
   setup %{conn: conn} do
@@ -16,7 +16,7 @@ defmodule Jingle.API.CampaignControllerTest do
   end
 
   test "shows chosen resource", %{conn: conn} do
-    campaign = Repo.insert! %Campaign{show_id: 42, sponsor_id: 42}
+    campaign = Repo.insert! %Campaign{podcast_id: 42, sponsor_id: 42}
     conn = get conn, api_campaign_path(conn, :show, campaign)
     assert json_response(conn, 200)["id"] == campaign.id
   end

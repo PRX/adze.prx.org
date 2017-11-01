@@ -8,8 +8,8 @@ defmodule Jingle.API.CampaignController do
     render(conn, "index.json", campaigns: campaigns)
   end
 
-  def index(conn, %{"show_id" => show_id}) do
-    campaigns = Repo.all(from c in Campaign, where: c.show_id == ^show_id)
+  def index(conn, %{"podcast_id" => podcast_id}) do
+    campaigns = Repo.all(from c in Campaign, where: c.podcast_id == ^podcast_id)
     render(conn, "index.json", campaigns: campaigns)
   end
 
@@ -26,7 +26,7 @@ defmodule Jingle.API.CampaignController do
         conn
         |> put_status(:created)
         |> put_resp_header("location", api_campaign_path(conn, :show, campaign))
-        |> render("show.json", campaign: campaign)
+        |> render("podcast.json", campaign: campaign)
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
@@ -36,7 +36,7 @@ defmodule Jingle.API.CampaignController do
 
   def show(conn, %{"id" => id}) do
     campaign = Repo.get!(Campaign, id)
-    render(conn, "show.json", campaign: campaign)
+    render(conn, "podcast.json", campaign: campaign)
   end
 
   def update(conn, %{"id" => id, "campaign" => campaign_params}) do
@@ -45,7 +45,7 @@ defmodule Jingle.API.CampaignController do
 
     case Repo.update(changeset) do
       {:ok, campaign} ->
-        render(conn, "show.json", campaign: campaign)
+        render(conn, "podcast.json", campaign: campaign)
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)

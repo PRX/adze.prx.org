@@ -1,7 +1,7 @@
-defmodule Jingle.API.Show do
+defmodule Jingle.API.Podcast do
   use Jingle.Web, :model
 
-  schema "shows" do
+  schema "podcasts" do
     field :structure, :string
     field :network, :string
     field :name, :string

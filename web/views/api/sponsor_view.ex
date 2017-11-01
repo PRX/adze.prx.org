@@ -11,7 +11,7 @@ defmodule Jingle.API.SponsorView do
     }
   end
 
-  def render("show.json", %{conn: conn, sponsor: sponsor}) do
+  def render("podcast.json", %{conn: conn, sponsor: sponsor}) do
     campaigns = Enum.map(sponsor.campaigns, fn c ->
       %{start_date: c.start_date, end_date: c.end_date}
     end)

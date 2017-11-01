@@ -17,6 +17,11 @@ config :jingle, Jingle.Endpoint,
   pubsub: [name: Jingle.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+ # HAL mime type
+ config :mime, :types, %{
+   "application/hal+json" => ["hal"]
+ }
+
 # Configures the repository
 config :jingle, Jingle.Repo, adapter: Ecto.Adapters.Postgres
 

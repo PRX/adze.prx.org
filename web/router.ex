@@ -26,7 +26,7 @@ defmodule Jingle.Router do
       resources "/campaigns", CampaignController, only: [:index]
     end
 
-    resources "/shows", ShowController, except: [:new, :edit] do
+    resources "/podcasts", PodcastController, except: [:new, :edit] do
       resources "/campaigns", CampaignController, only: [:index]
     end
 

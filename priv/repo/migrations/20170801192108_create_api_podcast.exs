@@ -1,8 +1,8 @@
-defmodule Jingle.Repo.Migrations.CreateApi.Show do
+defmodule Jingle.Repo.Migrations.CreateApi.Podcast do
   use Ecto.Migration
 
   def change do
-    create table(:shows) do
+    create table(:podcasts) do
       add :structure, :text
       add :network, :string
       add :name, :string

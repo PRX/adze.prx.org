@@ -2,7 +2,7 @@
 
 // TODO change these to prod URLs eventually
 SPONSOR_URL = 'http://jingle.staging.prx.tech/api/v1/sponsors';
-PODCAST_URL = 'http://jingle.staging.prx.tech/api/v1/shows';
+PODCAST_URL = 'http://jingle.staging.prx.tech/api/v1/podcasts';
 CAMPAIGN_URL = 'http://jingle.staging.prx.tech/api/v1/campaigns';
 
 
@@ -17,7 +17,7 @@ function onSubmit(e){
   });
 
   attributes["sponsor_id"] = getOrCreateSponsor(attributes).id;
-  attributes["show_id"] = getOrCreatePodcast(attributes).id;
+  attributes["podcast_id"] = getOrCreatePodcast(attributes).id;
 
   createCampaign(attributes);
   setChoices(); // reset the answer choices for exising sponsor / podcast by pulling from jingle
@@ -44,7 +44,7 @@ function getOrCreatePodcast(attributes) {
     return {id: attributes['Existing podcast'].split(':')[1].trim()}
   } else {
     var newPodcast = {
-      show: {
+      podcast: {
         name: attributes['New podcast name'],
         network: attributes['New podcast network'],
         structure: attributes['New podcast show structure'],
@@ -66,7 +66,7 @@ function createCampaign(attributes) {
       copy: attributes['Copy'],
       zone: attributes['Zone(s)'].join(),
       sponsor_id: attributes['sponsor_id'],
-      show_id: attributes['show_id']
+      podcast_id: attributes['podcast_id']
     }
   }
   postRequest(CAMPAIGN_URL, newCampaign);

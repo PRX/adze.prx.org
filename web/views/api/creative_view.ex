@@ -11,7 +11,7 @@ defmodule Jingle.API.CreativeView do
     }
   end
 
-  def render("show.json", %{conn: conn, creative: creative}) do
+  def render("podcast.json", %{conn: conn, creative: creative}) do
     creative_json(creative, conn)
   end
 

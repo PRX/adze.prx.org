@@ -24,16 +24,16 @@ defmodule Jingle.API.RootView do
           href: fix_path(api_campaign_path(conn, :show, "{id}")),
           templated: true,
         }],
-        "prx:shows": [%{
-          title: "Get a paged collection of shows",
-          profile: "http://meta.prx.org/model/show",
-          href: api_show_path(conn, :index) <> "{?page,per}",
+        "prx:podcasts": [%{
+          title: "Get a paged collection of podcasts",
+          profile: "http://meta.prx.org/model/podcast",
+          href: api_podcast_path(conn, :index) <> "{?page,per}",
           templated: true,
         }],
-        "prx:show": [%{
-          title: "Get info for a single show",
-          profile: "http://meta.prx.org/model/show",
-          href: fix_path(api_show_path(conn, :show, "{id}")),
+        "prx:podcast": [%{
+          title: "Get info for a single podcast",
+          profile: "http://meta.prx.org/model/podcast",
+          href: fix_path(api_podcast_path(conn, :show, "{id}")),
           templated: true,
         }],
         "prx:sponsors": [%{

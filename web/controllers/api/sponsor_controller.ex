@@ -16,7 +16,7 @@ defmodule Jingle.API.SponsorController do
         conn
         |> put_status(:created)
         |> put_resp_header("location", api_sponsor_path(conn, :show, sponsor))
-        |> render("show.json", sponsor: Repo.preload(sponsor, :campaigns))
+        |> render("podcast.json", sponsor: Repo.preload(sponsor, :campaigns))
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
@@ -26,7 +26,7 @@ defmodule Jingle.API.SponsorController do
 
   def show(conn, %{"id" => id}) do
     sponsor = Repo.get!(Sponsor, id)
-    render(conn, "show.json", sponsor: Repo.preload(sponsor, :campaigns))
+    render(conn, "podcast.json", sponsor: Repo.preload(sponsor, :campaigns))
   end
 
   def update(conn, %{"id" => id, "sponsor" => sponsor_params}) do
@@ -35,7 +35,7 @@ defmodule Jingle.API.SponsorController do
 
     case Repo.update(changeset) do
       {:ok, sponsor} ->
-        render(conn, "show.json", sponsor: Repo.preload(sponsor, :campaigns))
+        render(conn, "podcast.json", sponsor: Repo.preload(sponsor, :campaigns))
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
