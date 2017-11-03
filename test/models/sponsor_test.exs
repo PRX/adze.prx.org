@@ -1,7 +1,7 @@
-defmodule Jingle.API.SponsorTest do
+defmodule Jingle.SponsorTest do
   use Jingle.ModelCase
 
-  alias Jingle.API.Sponsor
+  alias Jingle.Sponsor
 
   @valid_attrs %{billing_info: "some content", name: "some content", notes: "some content"}
   @invalid_attrs %{}

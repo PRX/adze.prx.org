@@ -1,7 +1,7 @@
 defmodule Jingle.API.CampaignController do
   use Jingle.Web, :controller
 
-  alias Jingle.API.Campaign
+  alias Jingle.Campaign
 
   def index(conn, %{"sponsor_id" => sponsor_id}) do
     campaigns = Repo.all(from c in Campaign, where: c.sponsor_id == ^sponsor_id)
@@ -26,17 +26,17 @@ defmodule Jingle.API.CampaignController do
         conn
         |> put_status(:created)
         |> put_resp_header("location", api_campaign_path(conn, :show, campaign))
-        |> render("podcast.json", campaign: campaign)
+        |> render("show.json", campaign: campaign)
       {:error, changeset} ->
         conn
-        |> put_status(:unprocessable_entity)
+        |> put_status(:bad_request)
         |> render(Jingle.ChangesetView, "error.json", changeset: changeset)
     end
   end
 
   def show(conn, %{"id" => id}) do
     campaign = Repo.get!(Campaign, id)
-    render(conn, "podcast.json", campaign: campaign)
+    render(conn, "show.json", campaign: campaign)
   end
 
   def update(conn, %{"id" => id, "campaign" => campaign_params}) do
@@ -45,10 +45,10 @@ defmodule Jingle.API.CampaignController do
 
     case Repo.update(changeset) do
       {:ok, campaign} ->
-        render(conn, "podcast.json", campaign: campaign)
+        render(conn, "show.json", campaign: campaign)
       {:error, changeset} ->
         conn
-        |> put_status(:unprocessable_entity)
+        |> put_status(:bad_request)
         |> render(Jingle.ChangesetView, "error.json", changeset: changeset)
     end
   end

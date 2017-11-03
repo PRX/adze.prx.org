@@ -1,7 +1,7 @@
-defmodule Jingle.CreativeControllerTest do
+defmodule Jingle.API.CreativeControllerTest do
   use Jingle.ConnCase
 
-  alias Jingle.API.Creative
+  alias Jingle.Creative
   @valid_attrs %{bit_rate: 42, campaign_id: 42, channel_mode: "some content", content_type: "some content", filename: "some content", format: "some content", label: "some content", layer: 42, length: 42, size: 42, status: "some content", upload_path: "some content", zone: "some content"}
   @invalid_attrs %{}
 
@@ -50,7 +50,7 @@ defmodule Jingle.CreativeControllerTest do
 
   test "does not create resource and renders errors when data is invalid", %{conn: conn} do
     conn = post conn, api_creative_path(conn, :create), creative: @invalid_attrs
-    assert json_response(conn, 422)["errors"] != %{}
+    assert json_response(conn, 400)["errors"] != %{}
   end
 
   test "updates and renders chosen resource when data is valid", %{conn: conn} do
@@ -63,7 +63,7 @@ defmodule Jingle.CreativeControllerTest do
   test "does not update chosen resource and renders errors when data is invalid", %{conn: conn} do
     creative = Repo.insert! %Creative{}
     conn = put conn, api_creative_path(conn, :update, creative), creative: @invalid_attrs
-    assert json_response(conn, 422)["errors"] != %{}
+    assert json_response(conn, 400)["errors"] != %{}
   end
 
   test "deletes chosen resource", %{conn: conn} do

@@ -16,17 +16,17 @@ defmodule Jingle.API.PodcastController do
         conn
         |> put_status(:created)
         |> put_resp_header("location", api_podcast_path(conn, :show, podcast))
-        |> render("podcast.json", podcast: Repo.preload(podcast, :campaigns))
+        |> render("show.json", podcast: Repo.preload(podcast, :campaigns))
       {:error, changeset} ->
         conn
-        |> put_status(:unprocessable_entity)
+        |> put_status(:bad_request)
         |> render(Jingle.ChangesetView, "error.json", changeset: changeset)
     end
   end
 
   def show(conn, %{"id" => id}) do
     podcast = Repo.get!(Podcast, id)
-    render(conn, "podcast.json", podcast: Repo.preload(podcast, :campaigns))
+    render(conn, "show.json", podcast: Repo.preload(podcast, :campaigns))
   end
 
   def update(conn, %{"id" => id, "podcast" => podcast_params}) do
@@ -35,10 +35,10 @@ defmodule Jingle.API.PodcastController do
 
     case Repo.update(changeset) do
       {:ok, podcast} ->
-        render(conn, "podcast.json", podcast: Repo.preload(podcast, :campaigns))
+        render(conn, "show.json", podcast: Repo.preload(podcast, :campaigns))
       {:error, changeset} ->
         conn
-        |> put_status(:unprocessable_entity)
+        |> put_status(:bad_request)
         |> render(Jingle.ChangesetView, "error.json", changeset: changeset)
     end
   end

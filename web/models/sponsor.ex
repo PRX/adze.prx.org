@@ -1,4 +1,4 @@
-defmodule Jingle.API.Sponsor do
+defmodule Jingle.Sponsor do
   use Jingle.Web, :model
 
   schema "sponsors" do
@@ -6,7 +6,7 @@ defmodule Jingle.API.Sponsor do
     field :billing_info, :string
     field :notes, :string
 
-    has_many :campaigns, Jingle.API.Campaign
+    has_many :campaigns, Jingle.Campaign
     timestamps()
   end
 

@@ -1,4 +1,4 @@
-defmodule Jingle.API.Campaign do
+defmodule Jingle.Campaign do
   use Jingle.Web, :model
 
   schema "campaigns" do
@@ -7,9 +7,9 @@ defmodule Jingle.API.Campaign do
     field :copy, :string
     field :zone, :string
 
-    belongs_to :sponsor, Jingle.API.Sponsor
-    belongs_to :podcast, Jingle.API.Podcast
-    has_many :creatives, Jingle.API.Creative
+    belongs_to :sponsor, Jingle.Sponsor
+    belongs_to :podcast, Jingle.Podcast
+    has_many :creatives, Jingle.Creative
     timestamps()
   end
 

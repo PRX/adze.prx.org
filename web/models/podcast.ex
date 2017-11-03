@@ -9,7 +9,7 @@ defmodule Jingle.API.Podcast do
     field :notes, :string
     field :recording_day, :string
 
-    has_many :campaigns, Jingle.API.Campaign
+    has_many :campaigns, Jingle.Campaign
     timestamps()
   end
 

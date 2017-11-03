@@ -1,7 +1,7 @@
 defmodule Jingle.API.SponsorController do
   use Jingle.Web, :controller
 
-  alias Jingle.API.Sponsor
+  alias Jingle.Sponsor
 
   def index(conn, _params) do
     sponsors = Repo.all(Sponsor)
@@ -16,17 +16,17 @@ defmodule Jingle.API.SponsorController do
         conn
         |> put_status(:created)
         |> put_resp_header("location", api_sponsor_path(conn, :show, sponsor))
-        |> render("podcast.json", sponsor: Repo.preload(sponsor, :campaigns))
+        |> render("show.json", sponsor: Repo.preload(sponsor, :campaigns))
       {:error, changeset} ->
         conn
-        |> put_status(:unprocessable_entity)
+        |> put_status(:bad_request)
         |> render(Jingle.ChangesetView, "error.json", changeset: changeset)
     end
   end
 
   def show(conn, %{"id" => id}) do
     sponsor = Repo.get!(Sponsor, id)
-    render(conn, "podcast.json", sponsor: Repo.preload(sponsor, :campaigns))
+    render(conn, "show.json", sponsor: Repo.preload(sponsor, :campaigns))
   end
 
   def update(conn, %{"id" => id, "sponsor" => sponsor_params}) do
@@ -35,10 +35,10 @@ defmodule Jingle.API.SponsorController do
 
     case Repo.update(changeset) do
       {:ok, sponsor} ->
-        render(conn, "podcast.json", sponsor: Repo.preload(sponsor, :campaigns))
+        render(conn, "show.json", sponsor: Repo.preload(sponsor, :campaigns))
       {:error, changeset} ->
         conn
-        |> put_status(:unprocessable_entity)
+        |> put_status(:bad_request)
         |> render(Jingle.ChangesetView, "error.json", changeset: changeset)
     end
   end

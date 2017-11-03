@@ -35,7 +35,7 @@ defmodule Jingle.API.PodcastControllerTest do
 
   test "does not create resource and renders errors when data is invalid", %{conn: conn} do
     conn = post conn, api_podcast_path(conn, :create), podcast: @invalid_attrs
-    assert json_response(conn, 422)["errors"] != %{}
+    assert json_response(conn, 400)["errors"] != %{}
   end
 
   test "updates and renders chosen resource when data is valid", %{conn: conn} do
@@ -48,7 +48,7 @@ defmodule Jingle.API.PodcastControllerTest do
   test "does not update chosen resource and renders errors when data is invalid", %{conn: conn} do
     podcast = Repo.insert! %Podcast{}
     conn = put conn, api_podcast_path(conn, :update, podcast), podcast: @invalid_attrs
-    assert json_response(conn, 422)["errors"] != %{}
+    assert json_response(conn, 400)["errors"] != %{}
   end
 
   test "deletes chosen resource", %{conn: conn} do
