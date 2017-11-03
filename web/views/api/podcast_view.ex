@@ -11,7 +11,7 @@ defmodule Jingle.API.PodcastView do
     }
   end
 
-  def render("podcast.json", %{conn: conn, podcast: podcast}) do
+  def render("show.json", %{conn: conn, podcast: podcast}) do
     campaigns = Enum.map(podcast.campaigns, fn c ->
       %{start_date: c.start_date, end_date: c.end_date}
     end)

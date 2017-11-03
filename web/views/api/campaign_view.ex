@@ -11,7 +11,7 @@ defmodule Jingle.API.CampaignView do
     }
   end
 
-  def render("podcast.json", %{conn: conn, campaign: campaign}) do
+  def render("show.json", %{conn: conn, campaign: campaign}) do
     campaign_json(campaign, conn)
   end
 
