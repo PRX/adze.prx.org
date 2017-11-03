@@ -1,4 +1,4 @@
-defmodule Jingle.API.Creative do
+defmodule Jingle.Creative do
   use Jingle.Web, :model
 
   schema "creatives" do
@@ -15,7 +15,7 @@ defmodule Jingle.API.Creative do
     field :upload_path, :string
     field :format, :string
 
-    belongs_to :campaign, Jingle.API.Campaign
+    belongs_to :campaign, Jingle.Campaign
     timestamps()
   end
 

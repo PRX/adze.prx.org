@@ -1,7 +1,7 @@
 defmodule Jingle.API.CampaignController do
   use Jingle.Web, :controller
 
-  alias Jingle.API.Campaign
+  alias Jingle.Campaign
 
   def index(conn, %{"sponsor_id" => sponsor_id}) do
     campaigns = Repo.all(from c in Campaign, where: c.sponsor_id == ^sponsor_id)

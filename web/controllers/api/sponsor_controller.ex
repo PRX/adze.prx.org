@@ -1,7 +1,7 @@
 defmodule Jingle.API.SponsorController do
   use Jingle.Web, :controller
 
-  alias Jingle.API.Sponsor
+  alias Jingle.Sponsor
 
   def index(conn, _params) do
     sponsors = Repo.all(Sponsor)

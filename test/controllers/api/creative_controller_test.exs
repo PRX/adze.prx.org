@@ -1,7 +1,7 @@
-defmodule Jingle.CreativeControllerTest do
+defmodule Jingle.API.CreativeControllerTest do
   use Jingle.ConnCase
 
-  alias Jingle.API.Creative
+  alias Jingle.Creative
   @valid_attrs %{bit_rate: 42, campaign_id: 42, channel_mode: "some content", content_type: "some content", filename: "some content", format: "some content", label: "some content", layer: 42, length: 42, size: 42, status: "some content", upload_path: "some content", zone: "some content"}
   @invalid_attrs %{}
 

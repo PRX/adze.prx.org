@@ -1,7 +1,7 @@
 defmodule Jingle.API.CreativeController do
   use Jingle.Web, :controller
 
-  alias Jingle.API.Creative
+  alias Jingle.Creative
 
   def index(conn, %{"campaign_id" => campaign_id}) do
     creatives = Repo.all(from c in Creative, where: c.campaign_id == ^campaign_id)
