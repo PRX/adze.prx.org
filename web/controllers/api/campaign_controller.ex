@@ -29,7 +29,7 @@ defmodule Jingle.API.CampaignController do
         |> render("show.json", campaign: campaign)
       {:error, changeset} ->
         conn
-        |> put_status(:unprocessable_entity)
+        |> put_status(:bad_request)
         |> render(Jingle.ChangesetView, "error.json", changeset: changeset)
     end
   end
@@ -48,7 +48,7 @@ defmodule Jingle.API.CampaignController do
         render(conn, "show.json", campaign: campaign)
       {:error, changeset} ->
         conn
-        |> put_status(:unprocessable_entity)
+        |> put_status(:bad_request)
         |> render(Jingle.ChangesetView, "error.json", changeset: changeset)
     end
   end

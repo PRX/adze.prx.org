@@ -19,7 +19,7 @@ defmodule Jingle.API.SponsorController do
         |> render("show.json", sponsor: Repo.preload(sponsor, :campaigns))
       {:error, changeset} ->
         conn
-        |> put_status(:unprocessable_entity)
+        |> put_status(:bad_request)
         |> render(Jingle.ChangesetView, "error.json", changeset: changeset)
     end
   end
@@ -38,7 +38,7 @@ defmodule Jingle.API.SponsorController do
         render(conn, "show.json", sponsor: Repo.preload(sponsor, :campaigns))
       {:error, changeset} ->
         conn
-        |> put_status(:unprocessable_entity)
+        |> put_status(:bad_request)
         |> render(Jingle.ChangesetView, "error.json", changeset: changeset)
     end
   end

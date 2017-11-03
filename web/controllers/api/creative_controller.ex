@@ -24,7 +24,7 @@ defmodule Jingle.API.CreativeController do
         |> render("show.json", creative: Repo.preload(creative, :campaign))
       {:error, changeset} ->
         conn
-        |> put_status(:unprocessable_entity)
+        |> put_status(:bad_request)
         |> render(Jingle.ChangesetView, "error.json", changeset: changeset)
     end
   end
@@ -43,7 +43,7 @@ defmodule Jingle.API.CreativeController do
         render(conn, "show.json", creative: Repo.preload(creative, :campaign))
       {:error, changeset} ->
         conn
-        |> put_status(:unprocessable_entity)
+        |> put_status(:bad_request)
         |> render(Jingle.ChangesetView, "error.json", changeset: changeset)
     end
   end

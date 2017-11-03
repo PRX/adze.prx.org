@@ -19,7 +19,7 @@ defmodule Jingle.API.PodcastController do
         |> render("show.json", podcast: Repo.preload(podcast, :campaigns))
       {:error, changeset} ->
         conn
-        |> put_status(:unprocessable_entity)
+        |> put_status(:bad_request)
         |> render(Jingle.ChangesetView, "error.json", changeset: changeset)
     end
   end
@@ -38,7 +38,7 @@ defmodule Jingle.API.PodcastController do
         render(conn, "show.json", podcast: Repo.preload(podcast, :campaigns))
       {:error, changeset} ->
         conn
-        |> put_status(:unprocessable_entity)
+        |> put_status(:bad_request)
         |> render(Jingle.ChangesetView, "error.json", changeset: changeset)
     end
   end
