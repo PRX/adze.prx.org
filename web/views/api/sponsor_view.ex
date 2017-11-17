@@ -13,7 +13,7 @@ defmodule Jingle.API.SponsorView do
 
   def render("show.json", %{conn: conn, sponsor: sponsor}) do
     campaigns = Enum.map(sponsor.campaigns, fn c ->
-      %{start_date: c.start_date, end_date: c.end_date}
+      %{startDate: c.start_date, endDate: c.end_date}
     end)
     sponsor_json(sponsor, conn)
     |> Map.put(:campaigns, campaigns)
@@ -23,7 +23,7 @@ defmodule Jingle.API.SponsorView do
     %{
       id: sponsor.id,
       name: sponsor.name,
-      billing_info: sponsor.billing_info,
+      billingInfo: sponsor.billing_info,
       notes: sponsor.notes,
       _links: %{
         self: %{

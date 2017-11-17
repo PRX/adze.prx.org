@@ -13,7 +13,7 @@ defmodule Jingle.API.PodcastView do
 
   def render("show.json", %{conn: conn, podcast: podcast}) do
     campaigns = Enum.map(podcast.campaigns, fn c ->
-      %{start_date: c.start_date, end_date: c.end_date}
+      %{startDate: c.start_date, endDate: c.end_date}
     end)
     podcast_json(podcast, conn)
     |> Map.put(:campaigns, campaigns)
@@ -27,7 +27,7 @@ defmodule Jingle.API.PodcastView do
       name: podcast.name,
       rate: podcast.rate,
       notes: podcast.notes,
-      recording_day: podcast.recording_day,
+      recordingDay: podcast.recording_day,
       _links: %{
         self: %{
           href: api_podcast_path(conn, :show, podcast),

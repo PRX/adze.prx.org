@@ -22,13 +22,13 @@ defmodule Jingle.API.CreativeView do
       filename: creative.filename,
       zone: creative.zone,
       size: creative.size,
-      content_type: creative.content_type,
+      contentType: creative.content_type,
       label: creative.label,
       length: creative.length,
       layer: creative.layer,
-      bit_rate: creative.bit_rate,
-      channel_mode: creative.channel_mode,
-      upload_path: creative.upload_path,
+      bitRate: creative.bit_rate,
+      channelMode: creative.channel_mode,
+      uploadPath: creative.upload_path,
       format: creative.format,
       _links: %{
         self: %{
