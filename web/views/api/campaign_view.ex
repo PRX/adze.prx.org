@@ -18,8 +18,8 @@ defmodule Jingle.API.CampaignView do
   defp campaign_json(campaign, conn) do
     %{
       id: campaign.id,
-      start_date: campaign.start_date,
-      end_date: campaign.end_date,
+      startDate: campaign.start_date,
+      endDate: campaign.end_date,
       copy: campaign.copy,
       zone: campaign.zone,
       _links: %{
