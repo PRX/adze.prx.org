@@ -1,6 +1,8 @@
 defmodule Jingle.Sponsor do
   use Jingle.Web, :model
 
+  # need to add a field dictating whether sponsor has script approval
+
   schema "sponsors" do
     field :name, :string
     field :billing_info, :string
