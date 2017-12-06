@@ -64,6 +64,7 @@ docker-compose run jingle test test/controllers/api/root_controller_test.exs
 ## Dependencies
 
 TODO:
+all the things
 maybe feeder to get podcasts?
 adzerk to get advertisers, campaigns, and to POST new ones
 AWS RDS
