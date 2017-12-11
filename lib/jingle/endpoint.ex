@@ -42,7 +42,7 @@ defmodule Jingle.Endpoint do
   plug Corsica,
     origins: ~r/.*\.prx\.(?:org|dev|tech|docker)$/,
     allow_headers: ~w(Authorization),
-    allow_methods: ~w(HEAD GET),
+    allow_methods: ~w(HEAD GET PUT),
     allow_credentials: true
 
   plug Jingle.Router
