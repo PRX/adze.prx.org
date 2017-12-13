@@ -1,7 +1,7 @@
 defmodule Jingle.API.PodcastControllerTest do
   use Jingle.ConnCase
 
-  alias Jingle.API.Podcast
+  alias Jingle.Podcast
   @valid_attrs %{name: "some content", network: "some content", notes: "some content", rate: "some content", recording_day: "some content", structure: "some content"}
   @invalid_attrs %{}
 

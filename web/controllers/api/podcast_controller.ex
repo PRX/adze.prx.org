@@ -1,7 +1,7 @@
 defmodule Jingle.API.PodcastController do
   use Jingle.Web, :controller
 
-  alias Jingle.API.Podcast
+  alias Jingle.Podcast
 
   def index(conn, _params) do
     podcasts = Repo.all(Podcast)

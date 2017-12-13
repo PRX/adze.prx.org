@@ -31,4 +31,4 @@ erl_crash.dump
 /deps_docker_compose
 
 # seeds
-*seeds.exs
+/priv/repo/seeds.exs
