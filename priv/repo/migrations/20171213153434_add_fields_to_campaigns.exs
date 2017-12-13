@@ -8,7 +8,7 @@ defmodule Jingle.Repo.Migrations.AddFieldsToCampaigns do
       add :edited_copy, :text
       add :must_say, :text
       add :due_date, :date
-      add :notes, :string
+      add :notes, :text
       add :approved, :boolean
     end
   end
