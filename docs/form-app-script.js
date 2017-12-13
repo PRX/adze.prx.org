@@ -63,7 +63,10 @@ function createCampaign(attributes) {
     campaign: {
       start_date: attributes['Start date'],
       end_date: attributes['End date'],
-      copy: attributes['Copy'],
+      due_date: attributes['Due date'],
+      original_copy: attributes['Copy'],
+      must_say: attributes['Must Say'],
+      notes: attributes['Notes'],
       zone: attributes['Zone(s)'].join(),
       sponsor_id: attributes['sponsor_id'],
       podcast_id: attributes['podcast_id']

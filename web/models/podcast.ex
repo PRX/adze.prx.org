@@ -1,4 +1,4 @@
-defmodule Jingle.API.Podcast do
+defmodule Jingle.Podcast do
   use Jingle.Web, :model
 
   schema "podcasts" do

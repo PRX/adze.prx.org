@@ -4,7 +4,12 @@ defmodule Jingle.Campaign do
   schema "campaigns" do
     field :start_date, Ecto.Date
     field :end_date, Ecto.Date
-    field :copy, :string
+    field :due_date, Ecto.Date
+    field :original_copy, :string
+    field :edited_copy, :string
+    field :must_say, :string
+    field :notes, :string
+    field :approved, :boolean
     field :zone, :string
 
     belongs_to :sponsor, Jingle.Sponsor
@@ -18,8 +23,9 @@ defmodule Jingle.Campaign do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:sponsor_id, :podcast_id, :start_date, :end_date, :copy, :zone])
-    |> validate_required([:sponsor_id, :podcast_id, :start_date, :end_date, :copy, :zone])
+    |> cast(params, [:sponsor_id, :podcast_id, :start_date, :end_date, :due_date, :original_copy, :edited_copy, :must_say, :notes, :approved, :zone])
+    |> validate_required([:start_date, :end_date, :original_copy, :zone])
     |> assoc_constraint(:sponsor)
+    |> assoc_constraint(:podcast)
   end
 end
