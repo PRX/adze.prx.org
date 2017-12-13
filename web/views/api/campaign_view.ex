@@ -20,6 +20,7 @@ defmodule Jingle.API.CampaignView do
       id: campaign.id,
       startDate: campaign.start_date,
       endDate: campaign.end_date,
+      updatedAt: campaign.updated_at,
       copy: campaign.copy,
       zone: campaign.zone,
       _links: %{
