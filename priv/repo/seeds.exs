@@ -7,12 +7,12 @@
 #
 #     Jingle.Repo.insert!(%Jingle.SomeModel{})
 alias Jingle.Repo
-alias Jingle.API.Sponsor
-alias Jingle.API.Campaign
-alias Jingle.API.Show
-alias Jingle.API.Creative
+alias Jingle.Sponsor
+alias Jingle.Campaign
+alias Jingle.Podcast
+alias Jingle.Creative
 
-Enum.each([Sponsor, Campaign, Show, Creative], fn f -> Repo.delete_all(f) end)
+Enum.each([Sponsor, Campaign, Podcast, Creative], fn f -> Repo.delete_all(f) end)
 
 blue_apron = Repo.insert! %Sponsor{
   name: "Blue Apron",
@@ -26,7 +26,7 @@ zip_recruiter = Repo.insert! %Sponsor{
   notes: "One job, alllll the places"
 }
 
-nnpi= Repo.insert! %Show{
+nnpi= Repo.insert! %Podcast{
   structure: "preroll preroll midroll postroll sonic_id",
   network: "Radiotopia",
   name: "99% Invincible",
@@ -35,7 +35,7 @@ nnpi= Repo.insert! %Show{
   recording_day: "Monday"
 }
 
-dogtalk = Repo.insert! %Show{
+dogtalk = Repo.insert! %Podcast{
   structure: "preroll preroll midroll postroll sonic_id",
   network: "Dogs",
   name: "Dogtalk",
@@ -46,19 +46,25 @@ dogtalk = Repo.insert! %Show{
 
 ba_campaign = Repo.insert! %Campaign{
   sponsor_id: blue_apron.id,
-  show_id: nnpi.id,
+  podcast_id: nnpi.id,
   start_date: Ecto.Date.cast!("2017-06-27"),
   end_date: Ecto.Date.cast!("2017-07-27"),
-  copy: "Yay blue apron!",
+  due_date: Ecto.Date.cast!("2017-07-21"),
+  original_copy: "Blue Apron Inc. is an American ingredient-and-recipe meal kit service. It exclusively operates in the United States.[1] The weekly boxes contain ingredients and also include suggested recipes that must be cooked by hand by the customer using the pre-ordered ingredients. Matt Salzberg, Ilia Papas and Matt Wadiak first began sending customers boxes containing the ingredients to cook multiple recipes in August 2012, packing and shipping the first 30 orders themselves from a commercial kitchen in Long Island City.",
+  must_say: "Blue Apron dot com slash free trial",
+  notes: "Currently promoted menu items include: wheatberry salad, raspberry chocolate",
   zone: "Preroll",
 }
 
 zip_campaign = Repo.insert! %Campaign{
   sponsor_id: zip_recruiter.id,
-  show_id: dogtalk.id,
+  podcast_id: dogtalk.id,
   start_date: Ecto.Date.cast!("2017-06-27"),
-  end_date: Ecto.Date.cast!("2017-07-27"),
-  copy: "hire the people!",
+  end_date: Ecto.Date.cast!("2017-07-20"),
+  due_date: Ecto.Date.cast!("2017-07-20"),
+  must_say: "Use offer code DogTalk to get 10% off your first posting",
+  original_copy: "Over 8 Million Jobs! There's no need to look anywhere else. With over 8 million jobs, ZipRecruiter is the only site you'll ever need to find your next job.",
+  notes: "If you use your offer code by Friday 1/3 you'll get double the points",
   zone: "Midroll"
 }
 
