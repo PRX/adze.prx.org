@@ -5,6 +5,7 @@ defmodule Jingle.Repo.Migrations.UseUtcForTimestamps do
     alter table(:campaigns) do
       modify :inserted_at, :utc_datetime
       modify :updated_at, :utc_datetime
+      modify :due_date, :utc_datetime
     end
 
     alter table(:sponsors) do
