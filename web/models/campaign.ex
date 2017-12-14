@@ -2,9 +2,9 @@ defmodule Jingle.Campaign do
   use Jingle.Web, :model
 
   schema "campaigns" do
-    field :start_date, Ecto.Date
-    field :end_date, Ecto.Date
-    field :due_date, Ecto.Date
+    field :start_date, :datetime
+    field :end_date, :datetime
+    field :due_date, :utc_datetime
     field :original_copy, :string
     field :edited_copy, :string
     field :must_say, :string
@@ -15,7 +15,7 @@ defmodule Jingle.Campaign do
     belongs_to :sponsor, Jingle.Sponsor
     belongs_to :podcast, Jingle.Podcast
     has_many :creatives, Jingle.Creative
-    timestamps()
+    timestamps(type: :utc_datetime)
   end
 
   @doc """
