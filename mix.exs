@@ -42,7 +42,7 @@ defmodule Jingle.Mixfile do
      {:postgrex, ">= 0.0.0"},
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
-     {:corsica, "~> 0.5"},
+     {:corsica, "~> 1.1.0"},
      {:prx_auth, "~> 0.0.1"},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
