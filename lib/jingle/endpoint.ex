@@ -41,8 +41,8 @@ defmodule Jingle.Endpoint do
   # CORS support
   plug Corsica,
     origins: ~r/.*\.prx\.(?:org|dev|tech|docker)$/,
-    allow_headers: ~w(Authorization),
-    allow_methods: ~w(HEAD GET PUT POST DELETE),
+    allow_headers: :all,
+    allow_methods: ~w(HEAD GET PUT POST DELETE OPTIONS),
     allow_credentials: true
 
   plug Jingle.Router
