@@ -10,7 +10,7 @@ defmodule Jingle.Podcast do
     field :recording_day, :string
 
     has_many :campaigns, Jingle.Campaign
-    timestamps()
+    timestamps(type: :utc_datetime)
   end
 
   @doc """

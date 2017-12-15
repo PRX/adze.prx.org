@@ -16,7 +16,7 @@ defmodule Jingle.Creative do
     field :format, :string
 
     belongs_to :campaign, Jingle.Campaign
-    timestamps()
+    timestamps(type: :utc_datetime)
   end
 
   @doc """
