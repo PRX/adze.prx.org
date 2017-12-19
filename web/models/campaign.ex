@@ -30,15 +30,22 @@ defmodule Jingle.Campaign do
   end
 
   defp utc_compatible_dates(params) do
-    midnight = %{hour: 0, minute: 0}
+    date_format = "{YYYY}-{0M}-{0D}"
+    params_list = for { k, v } <- params, do: { atomize_binary(k), v }
+    atomized_params = Map.new(params_list)
 
     try do
-      Map.update!(params, :start_date, &Map.merge(midnight, &1))
-      |> Map.update!(:end_date, &Map.merge(midnight, &1))
-      |> Map.update!(:due_date, &Map.merge(midnight, &1))
+      %{ atomized_params | start_date: Timex.parse!(atomized_params[:start_date], date_format),
+                        end_date: Timex.parse!(atomized_params[:end_date], date_format),
+                        due_date: Timex.parse!(atomized_params[:due_date], date_format) }
+
     rescue
-      # if one of these is missing, let the requirement validation catch it
-      KeyError -> params
+      # if we errored out on parsing, yield params as they are
+      FunctionClauseError -> params
     end
+  end
+
+  defp atomize_binary(value) do
+    if is_binary(value), do: String.to_atom(value), else: value
   end
 end

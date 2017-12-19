@@ -3,7 +3,15 @@ defmodule Jingle.CampaignTest do
 
   alias Jingle.Campaign
 
-  @valid_attrs %{original_copy: "some content", end_date: %{day: 17, month: 4, year: 2010}, podcast_id: 42, sponsor_id: 42, start_date: %{day: 17, month: 4, year: 2010}, due_date: %{day: 17, month: 4, year: 2010}, zone: "some content"}
+  @valid_attrs %{
+    original_copy: "content",
+    zone: "content",
+    podcast_id: 31,
+    sponsor_id: 31,
+    end_date: %{day: 17, month: 4, year: 2010, hour: 0, minute: 0},
+    start_date: %{day: 17, month: 4, year: 2010, hour: 0, minute: 0},
+    due_date: %{day: 17, month: 4, year: 2010, hour: 0, minute: 0}
+  }
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do
@@ -11,18 +19,34 @@ defmodule Jingle.CampaignTest do
     assert changeset.valid?
   end
 
-  test "casts times to utc-convertable times without overwriting fields" do
-    changeset = Campaign.changeset(%Campaign{}, @valid_attrs)
+  test "handles various date input types" do
+    required = %{ zone: "zone", original_copy: "copy", sponsor_id: 1, podcast_id: 1 }
+    string_date_params = %{
+      end_date: "2018-01-01",
+      start_date: "2018-01-01",
+      due_date: "2018-01-01"
+    }
+    changeset = Campaign.changeset(%Campaign{}, Map.merge(required, string_date_params))
     assert changeset.valid?
-    assert changeset.changes.due_date.hour == 0
+    assert changeset.changes.end_date.year == 2018
 
-    date_with_time = %{day: 17, month: 4, year: 2010, minute: 30, hour: 10}
-    new_params = %{@valid_attrs | end_date: date_with_time}
-
-    changeset = Campaign.changeset(%Campaign{}, new_params)
+    map_date_params = %{
+      start_date: %{day: 17, month: 4, year: 2017, hour: 0, minute: 0},
+      end_date: %{day: 17, month: 4, year: 2019, hour: 0, minute: 0},
+      due_date: %{day: 10, month: 4, year: 2017, hour: 0, minute: 0}
+    }
+    changeset = Campaign.changeset(%Campaign{}, Map.merge(required, map_date_params))
     assert changeset.valid?
-    assert changeset.changes.end_date.hour == 10
-    assert changeset.changes.end_date.minute == 30
+    assert changeset.changes.end_date.year == 2019
+    #
+    tuple_date_params = %{
+      start_date: %{day: 17, month: 4, year: 2017, hour: 0, minute: 0},
+      end_date: %{day: 17, month: 4, year: 2020, hour: 0, minute: 0},
+      due_date: %{day: 10, month: 4, year: 2017, hour: 0, minute: 0}
+    }
+    changeset = Campaign.changeset(%Campaign{}, Map.merge(required, tuple_date_params))
+    assert changeset.valid?
+    assert changeset.changes.end_date.year == 2020
   end
 
   test "changeset with invalid attributes" do
