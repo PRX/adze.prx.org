@@ -2,7 +2,15 @@ defmodule Jingle.API.CampaignControllerTest do
   use Jingle.ConnCase
 
   alias Jingle.Campaign
-  @valid_attrs %{original_copy: "some content", end_date: %{day: 17, month: 4, year: 2010}, podcast_id: 42, sponsor_id: 42, start_date: %{day: 17, month: 4, year: 2010}, due_date: %{day: 17, month: 4, year: 2010}, zone: "some content"}
+  @valid_attrs %{
+    original_copy: "some content",
+    zone: "some content",
+    podcast_id: 42,
+    sponsor_id: 42,
+    end_date: %{day: 17, month: 4, year: 2010, hour: 0, minute: 0},
+    start_date: %{day: 17, month: 4, year: 2010, hour: 0, minute: 0},
+    due_date: %{day: 17, month: 4, year: 2010, hour: 0, minute: 0}
+  }
   @invalid_attrs %{}
 
   setup %{conn: conn} do
