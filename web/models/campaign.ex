@@ -30,21 +30,21 @@ defmodule Jingle.Campaign do
   end
 
   defp utc_compatible_dates(params) do
-    date_format = "{YYYY}-{0M}-{0D}"
-    try do
-      params = atomize_map(params)
-      %{ params | start_date: Timex.parse!(params[:start_date], date_format),
-                  end_date: Timex.parse!(params[:end_date], date_format),
-                  due_date: Timex.parse!(params[:due_date], date_format) }
-
-    rescue
-      # if we errored out on parsing, yield params as they are
-      FunctionClauseError -> params
-    end
+    params = atomize_map(params)
+    date_params = Map.take(params, [:start_date, :end_date, :due_date])
+    parsed_date_params = for { k, v } <- date_params, into: %{}, do: { k, parse_dtim(v) }
+    Map.merge(params, parsed_date_params)
   end
 
   defp atomize_map(map) do
     atomize = fn(val) -> if is_binary(val), do: String.to_atom(val), else: val end
     for { key, val } <- map, into: %{}, do: { atomize.(key), val }
+  end
+
+  defp parse_dtim(date_str) do
+    case Timex.parse(date_str, "{YYYY}-{0M}-{0D}") do
+      {:ok, dtim} -> Timex.Timezone.convert(dtim, :utc)
+      {:error, _} -> date_str
+    end
   end
 end
