@@ -31,13 +31,11 @@ defmodule Jingle.Campaign do
 
   defp utc_compatible_dates(params) do
     date_format = "{YYYY}-{0M}-{0D}"
-    params_list = for { k, v } <- params, do: { atomize_binary(k), v }
-    atomized_params = Map.new(params_list)
-
     try do
-      %{ atomized_params | start_date: Timex.parse!(atomized_params[:start_date], date_format),
-                        end_date: Timex.parse!(atomized_params[:end_date], date_format),
-                        due_date: Timex.parse!(atomized_params[:due_date], date_format) }
+      params = atomize_map(params)
+      %{ params | start_date: Timex.parse!(params[:start_date], date_format),
+                  end_date: Timex.parse!(params[:end_date], date_format),
+                  due_date: Timex.parse!(params[:due_date], date_format) }
 
     rescue
       # if we errored out on parsing, yield params as they are
@@ -45,7 +43,8 @@ defmodule Jingle.Campaign do
     end
   end
 
-  defp atomize_binary(value) do
-    if is_binary(value), do: String.to_atom(value), else: value
+  defp atomize_map(map) do
+    atomize = fn(val) -> if is_binary(val), do: String.to_atom(val), else: val end
+    for { key, val } <- map, into: %{}, do: { atomize.(key), val }
   end
 end
