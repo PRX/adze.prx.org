@@ -50,9 +50,9 @@ defmodule Jingle.API.CampaignView do
   end
 
   defp iso_8601_date_format(date) do
-    case date do
-      nil -> nil
-      _   -> Timex.format!(Ecto.DateTime.cast!(date), "{ISO:Extended:Z}")
+    case Timex.format(date, "{ISO:Extended:Z}") do
+      {:ok, dtim} -> dtim
+      {:error, _}  -> nil
     end
   end
 end
