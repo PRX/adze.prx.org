@@ -4,7 +4,7 @@ defmodule Jingle.Mixfile do
   def project do
     [app: :jingle,
      version: "0.0.1",
-     elixir: "~> 1.2",
+     elixir: "~> 1.4.2",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,
@@ -25,7 +25,7 @@ defmodule Jingle.Mixfile do
   defp apps(_), do: apps()
   defp apps, do: [
     :phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-    :phoenix_ecto, :postgrex, :corsica, :prx_auth
+    :phoenix_ecto, :postgrex, :corsica, :prx_auth, :timex
   ]
 
   # Specifies which paths to compile per environment.
@@ -36,12 +36,13 @@ defmodule Jingle.Mixfile do
   #
   # Type `mix help deps` for examples and options.
   defp deps do
-    [{:phoenix, "~> 1.2.1"},
+    [{:phoenix, "~> 1.3.0-rc"},
      {:phoenix_pubsub, "~> 1.0"},
      {:phoenix_ecto, "~> 3.0"},
-     {:postgrex, ">= 0.0.0"},
+     {:postgrex, ">= 0.13.3"},
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
+     {:timex, "~> 3.1"},
      {:corsica, "~> 1.1.0"},
      {:prx_auth, "~> 0.0.1"},
      {:gettext, "~> 0.11"},

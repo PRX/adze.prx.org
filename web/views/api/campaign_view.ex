@@ -18,10 +18,10 @@ defmodule Jingle.API.CampaignView do
   defp campaign_json(campaign, conn) do
     %{
       id: campaign.id,
-      startDate: campaign.start_date,
-      endDate: campaign.end_date,
-      dueDate: campaign.due_date,
-      updatedAt: campaign.updated_at,
+      startDate: iso_8601_date_format(campaign.start_date),
+      endDate: iso_8601_date_format(campaign.end_date),
+      dueDate: iso_8601_date_format(campaign.due_date),
+      updatedAt: iso_8601_date_format(campaign.updated_at),
       originalCopy: campaign.original_copy,
       editedCopy: campaign.edited_copy,
       mustSay: campaign.must_say,
@@ -47,5 +47,12 @@ defmodule Jingle.API.CampaignView do
         }
       }
     }
+  end
+
+  defp iso_8601_date_format(date) do
+    case Timex.format(date, "{ISO:Extended:Z}") do
+      {:ok, dtim} -> dtim
+      {:error, _}  -> nil
+    end
   end
 end

@@ -7,7 +7,7 @@ defmodule Jingle.Sponsor do
     field :notes, :string
 
     has_many :campaigns, Jingle.Campaign
-    timestamps()
+    timestamps(type: :utc_datetime)
   end
 
   @doc """
