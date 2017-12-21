@@ -32,19 +32,10 @@ defmodule Jingle.CampaignTest do
 
     map_date_params = %{
       start_date: %{day: 17, month: 4, year: 2017, hour: 0, minute: 0},
-      end_date: %{day: 17, month: 4, year: 2019, hour: 0, minute: 0},
-      due_date: %{day: 10, month: 4, year: 2017, hour: 0, minute: 0}
-    }
-    changeset = Campaign.changeset(%Campaign{}, Map.merge(required, map_date_params))
-    assert changeset.valid?
-    assert changeset.changes.end_date.year == 2019
-    #
-    tuple_date_params = %{
-      start_date: %{day: 17, month: 4, year: 2017, hour: 0, minute: 0},
       end_date: %{day: 17, month: 4, year: 2020, hour: 0, minute: 0},
       due_date: %{day: 10, month: 4, year: 2017, hour: 0, minute: 0}
     }
-    changeset = Campaign.changeset(%Campaign{}, Map.merge(required, tuple_date_params))
+    changeset = Campaign.changeset(%Campaign{}, Map.merge(required, map_date_params))
     assert changeset.valid?
     assert changeset.changes.end_date.year == 2020
   end
