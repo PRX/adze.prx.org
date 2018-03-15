@@ -8,7 +8,8 @@ A [Phoenix app](http://www.phoenixframework.org) providing an API to ad handling
 
 ### Local
 
-To get started, make sure you have completed the [Phoenix install guide](http://www.phoenixframework.org/docs/installation).  Then:
+To get started, make sure you have completed the [Phoenix install guide](http://www.phoenixframework.org/docs/installation). Then:
+
 ```
 # Get the code
 git clone git@github.com:PRX/jingle.prx.org.git
@@ -21,10 +22,10 @@ cp env-example .env
 vi .env
 
 # Start the phoenix server
-mix phoenix.server
+mix phx.server
 
 # Or run interactively
-iex -S mix phoenix.server
+iex -S mix phx.server
 
 # Or just get a console
 iex -S mix
@@ -33,7 +34,7 @@ iex -S mix
 ### Docker
 
 Currently on OSX, [Dinghy](https://github.com/codekitchen/dinghy) is probably
-the best way to set up your dev environment.  Using VirtualBox is recommended.
+the best way to set up your dev environment. Using VirtualBox is recommended.
 Also be sure to install `docker-compose` along with the toolbox.
 
 This project is setup primarily to build a `MIX_ENV=prod` docker image. To avoid
